@@ -1,0 +1,116 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+  padding: 10px;
+  color: white;
+}
+
+.intro {
+  font-size: 18px;
+  text-align: center;
+  margin: 40px 60px 70px 60px;
+}
+
+.box {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+.btn-lg {
+  padding: 5px 40px;
+}
+
+div.row.justify-content-center {
+  border-style: none;
+}
+
+.btn-sm {
+  margin: 0px 0px 0px 30px;
+}
+
+.form-control {
+  width: 250px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+span.login {
+  font-size: 16px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  width: 250px;
+}
+
+.special_button {
+  margin-top: 80px;
+  margin-left: 255px;
+  display: inline-block;
+}
+
+li {
+  list-style: none;
+  line-height: 35px;
+}
+
+li a {
+  color: black;
+  font-size: 18px;
+}
+
+li a:hover {
+  color: #DC3545;
+  text-decoration: none;
+}
+
+p.heading {
+  font-size: 18px;
+  font-weight: bold;
+  color: #DC3545;
+}
+
+.col-4 {
+  text-align: left;
+  display: inline-block;
+  border-collapse: collapse;
+}
+
+.col-4 li {
+  font-weight: bold;
+
+}
+
+.row {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  border-top: 1px solid black;
+}
+
+.col-4 span {
+  color: #DC3545;
+  font-weight: normal;
+}
+
+.backtosearch {
+  margin: 40px 0px 0px 220px;
+}
+
+.special_input {
+  margin-top: 60px;
+}
+
+.chart {
+  width: 75%;
+}

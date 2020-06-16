@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Hello, {{username}}!!
+{% endblock %}
+
+{% block body %}
+
+  <span class="login">Logged in as: <strong>{{id}}</strong></span>
+
+  <br><br>
+  <div class="row justify-content-center">
+      <a href="{{ url_for('chart') }}"><button type="button" class="btn btn-outline-danger btn-lg">Visualize Budget</button></a>
+  </div>
+
+{% endblock %}
