@@ -1,5 +1,7 @@
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  /* font-family: 'Source Sans Pro', sans-serif; */
+  font-family: serif;
+  background-color: #e4dff5;
 }
 
 h1 {
@@ -27,6 +29,8 @@ h1 {
 
 .btn-lg {
   padding: 5px 40px;
+  border-style: solid;
+  border-color: red;
 }
 
 div.row.justify-content-center {
@@ -70,14 +74,14 @@ li a {
 }
 
 li a:hover {
-  color: #DC3545;
+  color: #17a2b8;
   text-decoration: none;
 }
 
 p.heading {
   font-size: 18px;
   font-weight: bold;
-  color: #DC3545;
+  color: #17a2b8;
 }
 
 .col-4 {
@@ -99,7 +103,7 @@ p.heading {
 }
 
 .col-4 span {
-  color: #DC3545;
+  color: #17a2b8;
   font-weight: normal;
 }
 

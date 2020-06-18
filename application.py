@@ -1,13 +1,11 @@
-# Alice Huang, March 2020
+# Alice Huang & Jacquelyn Chow, June 2020
 
 import os
 import requests
 import csv
 import random
 import time
-res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "ON8ZvUZmSegF1n06YBiw", "isbns": "9781632168146"})
-print(res.json())
-
+# res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "ON8ZvUZmSegF1n06YBiw", "isbns": "9781632168146"})
 
 from flask import Flask, session, render_template, request, jsonify, abort
 from flask_session import Session
@@ -16,9 +14,9 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 app = Flask(__name__)
 
-# Check for environment variable
-if not os.getenv("DATABASE_URL"):
-    raise RuntimeError("DATABASE_URL is not set")
+# Check for environment variable - if using database
+# if not os.getenv("DATABASE_URL"):
+#     raise RuntimeError("DATABASE_URL is not set")
 
 # Configure session to use filesystem
 app.config["SESSION_PERMANENT"] = False
@@ -26,9 +24,14 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Set up database
-engine = create_engine(os.getenv("DATABASE_URL"))
-db = scoped_session(sessionmaker(bind=engine))
+# engine = create_engine(os.getenv("DATABASE_URL"))
+# db = scoped_session(sessionmaker(bind=engine))
 
+#-----------------------------------------------------------------------------
+# • for each route, define which template (html file) to render from the
+# templates folder
+# • pass in parameters if needed to render template
+# • everything before the return has to do with reading/writing to database
 
 @app.route("/", methods=["GET"])
 def index():
@@ -37,7 +40,6 @@ def index():
 @app.route("/register")
 def register():
     return render_template("register.html")
-
 
 @app.route("/login")
 def login():
@@ -81,37 +83,3 @@ def hello2():
         # if correct login info, add user id to session to store
         session["user_id"].append(id.user_id)
         return render_template("hello2.html", username=username, id=id.username)
-
-# helper function, loads live random data using data_gen.py script 
-@app.route("/data")
-def data():
-    dollars = 0
-    projected = 1000
-    rec = 1000
-
-    fieldnames = ["dollars", "projected", "rec"]
-
-
-    with open('static/diningDollars2.csv', 'w') as csv_file:
-        csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        csv_writer.writeheader()
-
-    for i in range(20):
-        with open('static/diningDollars2.csv', 'a') as csv_file:
-            csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
-            info = {
-                "dollars": dollars,
-                "projected": projected,
-                "rec": rec
-            }
-
-            csv_writer.writerow(info)
-            print(dollars, projected, rec)
-
-            dollars = dollars + random.randint(-100, 50)
-            projected = projected + random.randint(-20, 20)
-            rec = rec + random.randint(-15, 25)
-
-        time.sleep(1)
-    return render_template("chart.html")
