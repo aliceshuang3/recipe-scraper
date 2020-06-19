@@ -17,6 +17,7 @@
     `pip3 install flask`
     `pip3 install flask_session`
     `pip3 install sqlalchemy`
+    `pip3 install Flask-SqlAlchemy`
   - Change flask to development instead of production
     `export FLASK_ENV=development`
 2. Type `export FLASK_APP=application.py` (*tells flask where are app's python code is*)
