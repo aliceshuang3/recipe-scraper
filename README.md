@@ -11,6 +11,14 @@
 
 ## Run Flask App
 1. Go to the project directory in terminal
+  - Open a virtual environment 
+    `tutorial-env/bin/activate`
+  - Download the following using pip3 or pip: 
+    `pip3 install flask`
+    `pip3 install flask_session`
+    `pip3 install sqlalchemy`
+  - Change flask to development instead of production
+    `export FLASK_ENV=development`
 2. Type `export FLASK_APP=application.py` (*tells flask where are app's python code is*)
 3. Type `export FLASK_DEBUG=1` (*sets the debugger flag so page will update with changes in code*)
 4. `flask run`
