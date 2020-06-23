@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Hello, {{username}}!! Thanks for joining.
+
+{% endblock %}
+
+{% block body %}
+  <p class="intro">
+    <a href="{{ url_for('index') }}"><button type="button" class="btn btn-outline-info btn-lg">Home</button></a>
+  </p>
+
+  <p>
+    <a href="{{ url_for('login') }}"><button type="button" class="btn btn-outline-info btn-lg">Login</button></a>
+  </p>
+
+
+{% endblock %}

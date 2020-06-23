@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Home
+{% endblock %}
+
+{% block body %}
+    <h4 class="intro">
+        Welcome to the recipe scraper site for novice cooks!
+    </h4>
+    <p><a href="{{url_for('login')}}"><button type="button" class="btn btn-outline-info btn-lg">Login</button></a>
+{% endblock %}
