@@ -23,25 +23,28 @@
           <h1><strong>Beginner Cooks App</strong></h1>
         </div>
         <ul class="nav-links">
-          <!-- If current user is not logged in -->
-          {% if current_user.is_anonymous %}
           <li>
             <a href="{{ url_for('index') }}"><button type="button">Home</button></a>
           </li>
+          <!-- If current user is not logged in -->
+          {% if current_user.is_anonymous %}
           <li>
             <a href="{{ url_for('login') }}"><button type="button"=>Login</button></a>
           </li>
-          <!-- Current user is logged in and wants to log out -->
-          {% else %}
+          {% endif %}
           <li>
-            <a href="{{ url_for('searchRecipe') }}"><button type="button">Search</button></a>
+            <a href="{{ url_for('searchRecipes') }}"><button type="button">Search</button></a>
+          </li>
+          <!-- Current user is logged in and wants to log out/see saved recipes -->
+          {% if not current_user.is_anonymous %}
+          <li>
+            <a href="{{ url_for('savedRecipes') }}"><button type="button">Saved Recipes</button></a>
           </li>
           <li>
             <a href="{{ url_for('logout') }}"><button type="button">Logout</button></a>
           </li>
           {% endif %}
         </ul>
-        <a href="{{ url_for('index') }}"><button type="button">Creators</button></a>          
       </nav>
       
       <!-- HEADER -->

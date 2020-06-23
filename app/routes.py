@@ -9,11 +9,6 @@ from werkzeug.urls import url_parse
 def index():
     return render_template("home.html")
 
-@app.route("/recipelanding", methods=["GET"])
-@login_required # function is protected and will not allow access to users that aren't authenticated
-def searchRecipe():
-    return render_template("recipeLanding.html")
-
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     # check if user is already logged in or not
@@ -39,7 +34,7 @@ def login():
     # or a special anonymous user object if the user did not log in yet
     # check if user is already logged in or not
     if current_user.is_authenticated:
-        return redirect(url_for('searchRecipe'))
+        return redirect(url_for('searchRecipes'))
     # instantiate form object
     form = LoginForm()
     # if at least one field fails validation, then the function will return False, 
@@ -63,10 +58,27 @@ def login():
         next_page = request.args.get('next')
         # user had no redirects, bring them to recipe landing page
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('searchRecipe')
+            next_page = url_for('searchRecipes')
         # otherwise send them to the page they were last at before logging in
         return redirect(next_page)
     return render_template('login.html', form=form)
+
+@app.route("/searchRecipes", methods=["GET"])
+def searchRecipes():
+    return render_template("searchRecipes.html")
+
+@app.route("/saved")
+@login_required # function is protected and will not allow access to users that aren't authenticated
+def savedRecipes():
+    return render_template('savedRecipes.html')
+
+@app.route("/results")
+def recipeResults():
+    return render_template('recipeResults.html')
+
+@app.route("/random")
+def randomRecipe():
+    return render_template('randomRecipe.html')
 
 @app.route("/logout")
 def logout():
