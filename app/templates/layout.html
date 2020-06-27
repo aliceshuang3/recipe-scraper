@@ -38,7 +38,7 @@
           <!-- Current user is logged in and wants to log out/see saved recipes -->
           {% if not current_user.is_anonymous %}
           <li>
-            <a href="{{ url_for('savedRecipes') }}"><button type="button">Saved Recipes</button></a>
+            <a href="{{ url_for('savedRecipes', username=current_user.username) }}"><button type="button">Saved Recipes</button></a>
           </li>
           <li>
             <a href="{{ url_for('logout') }}"><button type="button">Logout</button></a>
