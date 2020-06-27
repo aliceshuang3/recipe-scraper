@@ -1,9 +1,11 @@
 from flask import render_template, flash, redirect, request, url_for
-from app import app, db
+from app import app, db, mail
 from app.forms import LoginForm, SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Recipe
 from werkzeug.urls import url_parse
+from app.forms import ResetRequestForm, ResetPasswordForm
+from app.email import *
 
 @app.route("/", methods=["GET"])
 def index():
@@ -67,10 +69,12 @@ def login():
 def searchRecipes():
     return render_template("searchRecipes.html")
 
-@app.route("/saved")
+@app.route("/saved/<username>")
 @login_required # function is protected and will not allow access to users that aren't authenticated
-def savedRecipes():
-    return render_template('savedRecipes.html')
+def savedRecipes(username):
+    # if there are no results automatically sends a 404 error back to client
+    user = User.query.filter_by(username=username).first_or_404()
+    return render_template('savedRecipes.html', user=user)
 
 @app.route("/results")
 def recipeResults():
@@ -84,3 +88,55 @@ def randomRecipe():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetRequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash("Check your email for the instructions to reset your password.", 'info')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html', title='Reset Password', form=form)
+
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    user = User.verify_reset_token(token)
+    if not user:
+        flash("Invalid or expired token", 'warning')
+        return redirect(url_for('reset_request'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+        flash('Your password has been reset. You are now able to log in.')
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', form=form)
+
+"""
+@app.cli.command("initdb")
+def reset_db():
+    # Drops and creates fresh database
+    db.drop_all()
+    db.create_all()
+    print("Initialized default DB")
+
+@app.cli.command("bootstrap")
+def bootstrap_data():
+    db.drop_all()
+    db.create_all()
+    db.session.add(
+        User(
+            username="jacq",
+            email="icecreamjackie@gmail.com",
+            password_hash="asdjfk123"
+        )
+    )
+    db.session.commit()
+    print("added development dataset")
+"""
