@@ -12,13 +12,12 @@ content = BeautifulSoup(response.content, "html.parser")
 # scrape feed listings
 recipes = []
 feed = content.findAll('h2', attrs={"class": "gallery-slide-caption__hed"})
+
+# add all 89 recipes to be saved
 for item in feed:
-    if "Pasta" in item.text:
-        recipes.append(item.text)
+    recipes.append(item.text)
 
-print(recipes)
-
-# loop through all potato recipes on feed
+# loop through all recipes on feed - go to each recipe's url
 allRecipes = []
 
 for food in recipes:
@@ -27,31 +26,55 @@ for food in recipes:
 
     # form new recipe-specific url
     url = 'https://www.bonappetit.com/recipe/' + newRecipe1
-    response = requests.get(url, timeout=5)
-    content = BeautifulSoup(response.content, "html.parser")
 
-    # scrape recipe name
-    name = content.find('a', attrs={"class": "top-anchor"}).text
+    # catch out any timeout errors
+    try:
+        response = requests.get(url, timeout=10)
+    except requests.exceptions.Timeout:
+        print("Timeout occurred")
 
-    # scrape servings
-    servings = content.find('span', attrs={"class": "recipe__header__servings"}).text
+    # filter out invalid urls (check if response status code = 200)
+    if response.ok:
+        content = BeautifulSoup(response.content, "html.parser")
 
-    # scrape ingredients list
-    ingredList = []
-    for ingredient in content.findAll('div', attrs={"class": "ingredients__text"}):
-        ingredList.append(ingredient.text)
+        # scrape recipe name
+        name = content.find('a', attrs={"class": "top-anchor"}).text
 
-    # convert scraped data to json
-    recipeObject = {
-        "name": name,
-        "servings": servings,
-        "ingredients": ingredList
-    }
+        # scrape image url
+        img = content.find('img', attrs={"class": "ba-picture--fit"}).get("srcset")
 
-    print(recipeObject)
+        # scrape servings
+        servings = content.find('span', attrs={"class": "recipe__header__servings"}).text
 
-    allRecipes.append(recipeObject)
+        # scrape ingredients list
+        # (no separation for quantity and measurement for ingredients on this
+        # site, so store it all together in one table)
+        ingredList = []
+        for ingredient in content.findAll('div', attrs={"class": "ingredients__text"}):
+            ingredList.append(ingredient.text)
+
+        # scrape instructions
+        instructions = []
+        for step in content.findAll('li', attrs={"class": "step"}):
+            instructions.append(step.text)
+
+        # "scrape link" - use url variable above
+
+        # (no prep/cook time on this site)
+
+        # convert scraped data to json
+        recipeObject = {
+            "name": name,
+            "servings": servings,
+            "ingredients": ingredList,
+            "instructions": instructions,
+            "link": url,
+            "image": img
+        }
+
+        # save all json objects
+        allRecipes.append(recipeObject)
 
 # save data in json file
-with open('BAData.json', 'w') as outfile:
-    json.dump(allRecipes, outfile)
+with open('data/BAData.json', 'w', encoding='utf-8') as outfile:
+    json.dump(allRecipes, outfile, ensure_ascii=False, indent=4) # formats nicely
