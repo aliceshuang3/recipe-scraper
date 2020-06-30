@@ -14,72 +14,77 @@
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
       <title>Reciper Scraper</title>
+      <!-- NAVBAR -->
+      <header class="container-fluid">
+        <a href="{{ url_for('index') }}"><h1 class="logo">Beginner Cooks</h1></a>
+        <form action="">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle">
+          <nav>
+            <ul>
+              <li>
+                <a href="{{ url_for('index') }}">Home</a>
+              </li>
+              <!-- If current user is not logged in -->
+              {% if current_user.is_anonymous %}
+              <li>
+                <a href="{{ url_for('login') }}">Login</a>
+              </li>
+              {% endif %}
+              <li>
+                <a href="{{ url_for('searchRecipes') }}">Search</a>
+              </li>
+              <!-- Current user is logged in and wants to log out/see saved recipes -->
+              {% if not current_user.is_anonymous %}
+              <li>
+                <a href="{{ url_for('savedRecipes', username=current_user.username) }}">Saved Recipes</a>
+              </li>
+              <li>
+                <a href="{{ url_for('logout') }}">Logout</a>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+          <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+          </label>
+        </form>
+      </header>
     </head>
 
+    
     <body>
-      <!-- NAVBAR -->
-      <nav>
-        <div class="logo">
-          <h1><strong>Beginner Cooks App</strong></h1>
-        </div>
-        <ul class="nav-links">
-          <li>
-            <a href="{{ url_for('index') }}"><button type="button">Home</button></a>
-          </li>
-          <!-- If current user is not logged in -->
-          {% if current_user.is_anonymous %}
-          <li>
-            <a href="{{ url_for('login') }}"><button type="button"=>Login</button></a>
-          </li>
+      <!-- PAGE NAME -->
+      <div class="content container">
+        <h2>
+          {% block heading %}{% endblock %}
+        </h2>
+        {% block body %}
+        <!-- Flash Message
+            The get_flashed_messages() function comes from Flask, and returns 
+            a list of all the messages that have been registered with flash() previously
+            Once a flash message is requested once through the get_flashed_messages function it is 
+            removed from the message list, so it appears only once after the flash() function is called.-->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for category, message in get_flashed_messages(with_categories=True) %}
+              <div class="alert-{{category}} container alert alert-dismissible fade show" role="alert">
+                <div class="center-block">
+                  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                  {{ message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin: -6px;">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </div>
+            {% endfor %}
           {% endif %}
-          <li>
-            <a href="{{ url_for('searchRecipes') }}"><button type="button">Search</button></a>
-          </li>
-          <!-- Current user is logged in and wants to log out/see saved recipes -->
-          {% if not current_user.is_anonymous %}
-          <li>
-            <a href="{{ url_for('savedRecipes', username=current_user.username) }}"><button type="button">Saved Recipes</button></a>
-          </li>
-          <li>
-            <a href="{{ url_for('logout') }}"><button type="button">Logout</button></a>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-      
-      <!-- HEADER -->
-      <h2>{% block heading %}{% endblock %}</h2>
-      <!-- Flash Message -->
-      
-      <!-- The get_flashed_messages() function comes from Flask, and returns 
-        a list of all the messages that have been registered with flash() previously-->
-      <!-- Once a flash message is requested once through the get_flashed_messages function it is 
-        removed from the message list, so it appears only once after the flash() function is called.-->
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-        <div class="container alert alert-warning alert-dismissible fade show" role="alert">
-          <div class="row" style="margin: -3px;">
-            <div class="center-block">
-              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-              {{ message }} 
-              <button type="button" class="close" style="margin: -3px;" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      {% endif %}
-      {% endwith %}
-      
-      {% block body %}
-      {% endblock %}
-      
+        {% endwith %}
 
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        {% endblock %}
+      </div>
     </body>
 </html>

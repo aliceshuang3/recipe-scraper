@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
 
-{% block heading %}
-    Home
-{% endblock %}
+<div class="home">
+    {% block heading %}
+        Home
+    {% endblock %}
 
-{% block body %}
-    <h4 class="intro">
-        Welcome to the recipe scraper site for novice cooks!
-    </h4>
-    <p><a href="{{url_for('login')}}"><button type="button" class="btn btn-outline-info btn-lg">Login</button></a>
+    {% block body %}
+        <h4>
+            Welcome to the recipe scraper site for novice cooks!
+        </h4>
+        <a href="{{url_for('searchRecipes')}}"><button type="button" class="btn btn-outline-primary btn-lg round">Get Started</button></a>
+    </div>
 {% endblock %}
