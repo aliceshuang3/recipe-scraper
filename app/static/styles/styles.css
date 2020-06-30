@@ -254,18 +254,18 @@ body{
   }
   header {
     display: grid;
-    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+    grid-template-columns: auto auto auto auto;
   }
   .logo {
-    grid-column: 2 / 3;
+    grid-column: 1 / 2;
   }
   nav {
     all: unset;
-    grid-column: 3 / 4;
+    grid-column: 4 / 4;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 20px;
+    padding-top: 35px;
   }
   nav a {
     opacity: 1;
@@ -282,7 +282,7 @@ body{
     content: "";
     display: block;
     height: 5px;
-    background: #fdfcfc;
+    background: #333;
     position: absolute;
     top: -.75em;
     left: 0;

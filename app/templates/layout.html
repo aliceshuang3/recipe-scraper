@@ -12,11 +12,14 @@
       <!--google font-->
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
       <title>Reciper Scraper</title>
       <!-- NAVBAR -->
       <header class="container-fluid">
-        <a href="{{ url_for('index') }}"><h1 class="logo">Beginner Cooks</h1></a>
+        <a href="{{ url_for('index') }}"><h1 class="logo">
+          <img style="margin-right:10px; height:60px;" src="{{ url_for('static', filename='logo.png') }}">
+          Novice Chef</h1></a>
         <form action="">
           <input type="checkbox" id="nav-toggle" class="nav-toggle">
           <nav>
