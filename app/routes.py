@@ -25,7 +25,7 @@ def signup():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash("You're now registered. Enjoy our app!")
+        flash("You're now registered. Enjoy our app!", "success")
         # redirect user to login page
         return redirect(url_for('login'))
     return render_template("signup.html", form=form)
@@ -47,7 +47,7 @@ def login():
         # the username can be invalid, or the password can be incorrect for the user
         # takes pw hash stored with the user and determines if pw entered in form matches the hash or not
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
+            flash("Invalid username or password", "warning")
             # redirect user back to login page
             return redirect(url_for('login'))
         # registers the user as logged in, so that means that any future pages the user 
@@ -98,7 +98,7 @@ def reset_request():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             send_password_reset_email(user)
-        flash("Check your email for the instructions to reset your password.", 'info')
+        flash("Check your email for the instructions to reset your password.", "info")
         return redirect(url_for('login'))
     return render_template('reset_password_request.html', title='Reset Password', form=form)
 
@@ -108,13 +108,13 @@ def reset_token(token):
         return redirect(url_for('index'))
     user = User.verify_reset_token(token)
     if not user:
-        flash("Invalid or expired token", 'warning')
+        flash("Invalid or expired token", "warning")
         return redirect(url_for('reset_request'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         user.set_password(form.password.data)
         db.session.commit()
-        flash('Your password has been reset. You are now able to log in.')
+        flash("Your password has been reset. You are now able to log in.", "success")
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
 

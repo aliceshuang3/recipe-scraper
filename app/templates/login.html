@@ -1,51 +1,51 @@
 {% extends "layout.html" %}
 
+
 {% block heading %}
-    
 {% endblock %}
 
 {% block body %}
-    <!--add form to collect details-->
-    <form action="" class="login-form" method="post" novalidate>
-      <h1>Login</h1>
-      <!--generates a hidden field that includes a token that is used to 
-        protect the form against CSRF attacks-->
-      {{ form.hidden_tag() }}
-      <div class="txtb-fields">
-        <p>
-          {{ form.username.label }} 
-          {{ form.username() }}
-        </p>
-        <!-- Prints warning if left blank -->
-        {% for error in form.username.errors %}
-        <div class="error"">[{{ error }}]</div>
-        {% endfor %}
-      </div>
-      <div class="txtb-fields">
-        <p>
-          {{ form.password.label }} 
-          {{ form.password() }}
-        </p>
-        <!-- Prints warning if left blank -->
-        {% for error in form.password.errors %}
-        <div class="error"">[{{ error }}]</div>
-        {% endfor %}
-      </div>
-      <div class="txtb">
-        <p>
-          {{ form.remember_me() }} 
-          {{ form.remember_me.label }}
-        </p>
-        <button type=submit class="logbtn">Login</button>
-      </div>
-      <!-- SIGN UP link (for new users) -->
-      <div class="bottom-text">
-        <p>
-          Forgot Your Password? <a href="{{ url_for('reset_request') }}">Click to Reset It</a>
-        </p>
-        New User? <a style="color: #0081a7" href="{{ url_for('signup') }}">Click to Sign Up</a>
-      </div>
-    </form>
+    <div id="forms">
+      <!--add form to collect details-->
+      <form action="" class="login-form" method="post" novalidate>
+        <h1>Login</h1>
+        <!--generates a hidden field that includes a token that is used to 
+          protect the form against CSRF attacks-->
+        {{ form.hidden_tag() }}
+        <div class="txtb-fields">
+          <p>
+            {{ form.username.label }} 
+            {{ form.username() }}
+          </p>
+          <!-- Prints warning if left blank -->
+          {% for error in form.username.errors %}
+          <div class="error">[{{ error }}]</div>
+          {% endfor %}
+          <p>
+            {{ form.password.label }} 
+            {{ form.password() }}
+          </p>
+          <!-- Prints warning if left blank -->
+          {% for error in form.password.errors %}
+          <div class="error">[{{ error }}]</div>
+          {% endfor %}
+        </div>
+        <div class="txtb remember_me">
+          <p>
+            {{ form.remember_me() }} 
+            {{ form.remember_me.label }}
+          </p>
+          <button type=submit class="logbtn">Login</button>
+        </div>
+        <!-- SIGN UP link (for new users) -->
+        <div class="bottom-text">
+          <p>
+            Forgot Your Password? <a style="color: #0081a7" href="{{ url_for('reset_request') }}">Click to Reset</a>
+          </p>
+          New User? <a style="color: #0081a7" href="{{ url_for('signup') }}">Click to Sign Up</a>
+        </div>
+      </form>
+    </div>
     
 
 {% endblock %}

@@ -5,6 +5,12 @@ from flask_login import UserMixin
 from sqlalchemy.orm import relationship, backref
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
+# many-to-many relationship between user and the recipes they save
+saved_recipes = db.Table('saved_recipes',
+                    db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                    db.Column('recipe_id', db.Integer, db.ForeignKey('recipes.id'))
+                    )
+
 # The id field is usually in all models, and is used as the primary key. 
 # Each user in the database will be assigned a unique id value, stored in this field. 
 # Primary keys are, in most cases, automatically assigned by the database
@@ -12,12 +18,12 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 # User class created below inherits from db.Model, 
 # a base class for all models from Flask-SQLAlchemy
 class User(UserMixin, db.Model):
-    #__tablename__ = 'users'
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))    
-    recipes = db.relationship('Recipe', backref='title', lazy='dynamic')
+    recipes = db.relationship('Recipe', secondary=saved_recipes, backref='users', lazy='dynamic')
 
     # to disable concurrent, simultaneous logins per user:
     # when a user logs in, generate a session token and save it in the db
@@ -53,7 +59,7 @@ class User(UserMixin, db.Model):
         return User.query.get(user_id)
         
 class Recipe(db.Model):
-    #__tablename__ = 'recipes'
+    __tablename__ = 'recipes'
     id = db.Column(db.Integer, primary_key=True)
     # add string max lengths if database system is not SQLlite
     recipe_name = db.Column(db.String)
@@ -63,25 +69,9 @@ class Recipe(db.Model):
     instructions = db.Column(db.String)
     preptime = db.Column(db.String)
     cooktime = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Recipe {}>'.format(self.body)
-"""
-class Saved(db.Model):
-    __tablename__ = 'saved'
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
-    # timestamp useful for retrieving posts in chronological order
-    # working with UTC dates and times in a server application because it ensures 
-    # that you are using uniform timestamps regardless of where the users are located. 
-    # These timestamps will be converted to the user's local time when they are displayed.
-    dttm = db.Column(db.DateTime, default=datetime.utcnow)
-
-    user = relationship(User, backref=backref("saved", cascade="all, delete-orphan"))
-    recipe = relationship(Recipe, backref=backref("saved", cascade="all, delete-orphan"))
-"""
 
 # Application will configure a user loader function that can be called 
 # to load a user given the ID for the Flask-Login extension 

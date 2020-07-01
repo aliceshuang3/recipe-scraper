@@ -30,7 +30,7 @@ login_manager.login_message_category = 'info'
 
 # for resetting passwords
 mail = Mail(app)
-"""
+
 # Logging errors by email
 # only going to enable the email logger when the app is running without debug mode
 if not app.debug:
@@ -44,7 +44,7 @@ if not app.debug:
         mail_handler = SMTPHandler(
             mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
             fromaddr='no-reply@' + app.config['MAIL_SERVER'],
-            toaddrs=app.config['ADMINS'], subject='Recipe App Failure',
+            toaddrs=app.config['MAIL_USERNAME'], subject='Recipe App Failure',
             credentials=auth, secure=secure)
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
@@ -61,7 +61,7 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Recipe App startup')
-"""
+
 # models is a module that will define the structure of the database
 # import error handlers
 from app import routes, models, errors
