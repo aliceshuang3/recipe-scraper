@@ -36,7 +36,7 @@ header {
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 30px;
-  margin: 20px;
+  margin: 10px;
   font-weight: 700;
   color: #fdfcfc;
 }
@@ -142,10 +142,9 @@ body{
 /* alerts */
 .alert {
   padding: 5px;
-  border-radius: 3px;
+  margin: auto;
+  margin-top: 95px;
   font-size: 1rem;
-  border-width: 2px;
-  border-style: solid;
   width: 60%;
 }
 
@@ -198,6 +197,7 @@ body{
   margin-top: -30px;
   margin-bottom: 10px;
   font-size: 12px;
+  text-align: left;
 }
 
 /* login and signup buttons */
@@ -225,7 +225,9 @@ body{
   text-align: center;
   font-size: 15px;
 }
-
+.remember_me {
+  text-align: left;
+}
 /* signup page */
 .login-form.signup {
   height: 560px;
@@ -265,7 +267,7 @@ body{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-top: 35px;
+    padding-top: 25px;
   }
   nav a {
     opacity: 1;

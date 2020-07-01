@@ -14,7 +14,7 @@
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
       <!-- Favicon -->
       <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-      <title>Reciper Scraper</title>
+      <title>Novice Chef</title>
       <!-- NAVBAR -->
       <header class="container-fluid">
         <a href="{{ url_for('index') }}"><h1 class="logo">
@@ -56,12 +56,7 @@
 
     
     <body>
-      <!-- PAGE NAME -->
-      <div class="content container">
-        <h2>
-          {% block heading %}{% endblock %}
-        </h2>
-        {% block body %}
+      <div class="container-fluid">
         <!-- Flash Message
             The get_flashed_messages() function comes from Flask, and returns 
             a list of all the messages that have been registered with flash() previously
@@ -70,7 +65,7 @@
         {% with messages = get_flashed_messages() %}
           {% if messages %}
             {% for category, message in get_flashed_messages(with_categories=True) %}
-              <div class="alert-{{category}} container alert alert-dismissible fade show" role="alert">
+              <div class="alert-{{category}} alert alert-dismissible fade show" role="alert">
                 <div class="center-block">
                   <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                   {{ message }}
@@ -82,6 +77,13 @@
             {% endfor %}
           {% endif %}
         {% endwith %}
+      </div>
+      <!-- PAGE NAME -->
+      <div class="content container">
+        <h2>
+          {% block heading %}{% endblock %}
+        </h2>
+        {% block body %}
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
