@@ -37,6 +37,7 @@ nav {
 
 body {
   min-height: 100vh;
+  max-height: 100%;
   background-image: linear-gradient(290deg, #fdfcdc, #f07167);
   overflow: hidden;
   color: #333;
@@ -58,7 +59,7 @@ body {
   top: 54%;
   transform: translate(-50%, -50%);
 }
-.login-form h1 { 
+.login-form h1 {
   font-weight: 700;
   text-align: center;
   margin-top: -40px;
@@ -114,7 +115,7 @@ body {
 .login-form.signup {
   height: 590px;
 }
-.login-form .signup h1 { 
+.login-form .signup h1 {
   margin-top: -70px;
   margin-bottom: 30px;
 }
@@ -129,4 +130,41 @@ body {
 .signup .error {
   margin-top: -10px;
   font-size: 12px;
+}
+
+/* search page styles ********************************************/
+.container-fluid {
+  height: 110vh;
+  display: flex;
+  position: relative;
+}
+
+.row {
+  height: 110vh;
+  display: flex;
+  /* padding-top: 50px; */
+}
+
+/* left  */
+.search {
+  background-color: #fed9b7;
+  height: 100%;
+}
+
+.search.form-group {
+  margin: 0;
+  position: absolute;
+  top: 25%;
+}
+
+/* right  */
+.random {
+  background-color: #00afb9;
+  height: 100%;
+}
+
+#random-recipe {
+  position: absolute;
+  top: 25%;
+  text-align: center;
 }
