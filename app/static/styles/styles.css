@@ -338,7 +338,7 @@ body{
   box-shadow:0 0 0 .2rem rgba(128, 0, 0, 0.5);
 }
 /* search page styles ********************************************/
-.container-fluid {
+.container-fluid.search {
   height: 110vh;
   display: flex;
   position: relative;

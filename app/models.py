@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from sqlalchemy.orm import relationship, backref
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
-# many-to-many relationship between user and the recipes they save
+# many to many relationship between users and their saved recipes
 saved_recipes = db.Table('saved_recipes',
                     db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
                     db.Column('recipe_id', db.Integer, db.ForeignKey('recipes.id'))
@@ -14,6 +14,9 @@ saved_recipes = db.Table('saved_recipes',
 # The id field is usually in all models, and is used as the primary key. 
 # Each user in the database will be assigned a unique id value, stored in this field. 
 # Primary keys are, in most cases, automatically assigned by the database
+
+# Difference between db.String and db.Text: a string field has a limit of 255 characters, 
+# whereas a text field has a character limit of 30,000 characters
 
 # User class created below inherits from db.Model, 
 # a base class for all models from Flask-SQLAlchemy
@@ -27,7 +30,7 @@ class User(UserMixin, db.Model):
 
     # to disable concurrent, simultaneous logins per user:
     # when a user logs in, generate a session token and save it in the db
-    #session_token = db.Column(db.String(40), index=True)
+    #session_token = db.Column(db.Text, index=True)
 
     def __repr__(self):
         # if we did User.query.get(some id #), we would get the <User username>
@@ -61,23 +64,31 @@ class User(UserMixin, db.Model):
 class Recipe(db.Model):
     __tablename__ = 'recipes'
     id = db.Column(db.Integer, primary_key=True)
-    # add string max lengths if database system is not SQLlite
-    recipe_name = db.Column(db.String)
-    recipe_link = db.Column(db.String)
-    image_link = db.Column(db.String)
-    ingredients = db.Column(db.String)
-    instructions = db.Column(db.String)
-    preptime = db.Column(db.String)
-    cooktime = db.Column(db.String)
+    recipe_name = db.Column(db.Text)
+    recipe_link = db.Column(db.Text)
+    image_link = db.Column(db.Text)
+    instructions = db.Column(db.Text)
+    preptime = db.Column(db.Text)
+    cooktime = db.Column(db.Text)
+    # one to many relationship between recipe and ingredients
+    ingredients = db.relationship("Ingredient", backref='recipe') 
 
     def __repr__(self):
         return '<Recipe {}>'.format(self.body)
+
+class Ingredient(db.Model):
+    __tablename__ = 'ingredients'
+    id = db.Column(db.Integer, primary_key=True)
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+    ingredient_name = db.Column(db.Text)
 
 # Application will configure a user loader function that can be called 
 # to load a user given the ID for the Flask-Login extension 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
 """
 # Application will configure a user loader function that can be called 
 # to load a user given the session token for the Flask-Login extension 
