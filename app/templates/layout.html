@@ -54,13 +54,13 @@
       </header>
     </head>
 
-    
+
     <body>
       <div class="container-fluid">
         <!-- Flash Message
-            The get_flashed_messages() function comes from Flask, and returns 
+            The get_flashed_messages() function comes from Flask, and returns
             a list of all the messages that have been registered with flash() previously
-            Once a flash message is requested once through the get_flashed_messages function it is 
+            Once a flash message is requested once through the get_flashed_messages function it is
             removed from the message list, so it appears only once after the flash() function is called.-->
         {% with messages = get_flashed_messages() %}
           {% if messages %}
@@ -79,7 +79,7 @@
         {% endwith %}
       </div>
       <!-- PAGE NAME -->
-      <div class="content container">
+      <div class="content container-fluid d-flex flex-row">
         <h2>
           {% block heading %}{% endblock %}
         </h2>

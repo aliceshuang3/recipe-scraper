@@ -22,8 +22,9 @@
 }
 
 /* overlay background for header */
+/* nav bar color  */
 :root {
-  --background: rgba(253, 252, 220, .5);
+  --background: rgb(0, 175, 185, 0.75);
 }
 header {
   text-align: center;
@@ -117,8 +118,8 @@ nav a {
   top: 7px;
 }
 
-body{
-  min-height: 100vh;
+.background-img {
+  /* min-height: 100vh; */
   background-image: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)),
@@ -127,12 +128,18 @@ body{
   display: grid;
   overflow: hidden;
   color: #fdfcfc;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 /* center all body content */
 .content {
-  padding-top: 100px;
-  height: 60%;
+  /* padding-top: 100px; */
+  height: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -337,39 +344,54 @@ body{
 .show > .btn-outline-primary.dropdown-toggle:focus{
   box-shadow:0 0 0 .2rem rgba(128, 0, 0, 0.5);
 }
-/* search page styles ********************************************/
-.container-fluid {
-  height: 110vh;
-  display: flex;
-  position: relative;
+
+.home {
+  display: block;
+  margin: 0 auto;
+  margin-top: 25%;
 }
 
-.row {
-  height: 110vh;
-  display: flex;
-  /* padding-top: 50px; */
+/* search page styles ********************************************/
+.search-page {
+  background-size: cover;
+  display: grid;
+  overflow: hidden;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 102%;
 }
 
 /* left  */
 .search {
-  background-color: #fed9b7;
+  background-color: #0081a7;
   height: 100%;
 }
 
-.search.form-group {
-  margin: 0;
-  position: absolute;
-  top: 25%;
+.search-form label {
+  color: #ced4da;
+  font-size: 1.2rem;
 }
 
 /* right  */
 .random {
-  background-color: #00afb9;
+  background-color: #f07167;
   height: 100%;
 }
 
+.search-form, .random-form {
+  margin-top: 50%;
+}
+
+#recipe-search {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
 #random-recipe {
-  position: absolute;
-  top: 25%;
-  text-align: center;
+  margin-top: 35px;
 }

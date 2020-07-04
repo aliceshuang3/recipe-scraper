@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-    Search for Recipes
+    <!-- Search for Recipes -->
 {% endblock %}
 
 {% block body %}
@@ -9,23 +9,27 @@
     <h4 class="login">Logged in as: <strong>{{ current_user.username }}</strong></h4>
     {% endif %}
 
-    <div class="container-fluid h-100 d-flex flex-column">
-      <div class="row justify-content-center align-items-center">
+    <div class="container-fluid h-100 d-flex flex-row search-page">
+      <!-- <div class="row w-1"> -->
         <!-- left half  -->
-        <div class="col search">
+        <div class="col search h-100">
           <!-- search input  -->
           <form>
-            <div class="form-group">
+            <div class="form-group search-form">
               <label for="recipe-search">Help me use up my: </label>
               <input type="text" id="recipe-search" class="form-control form-control-lg" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
             </div>
           </form>
         </div>
         <!-- right half  -->
-        <div class="col random justify-content-center align-items-center">
-          <button type="button" id="random-recipe" class="btn btn-outline-secondary btn-lg">Find me a recipe!</button>
+        <div class="col random h-100">
+          <form>
+            <div class="form-group random-form">
+              <button type="button" id="random-recipe" class="btn btn-outline-light btn-lg">Find me a recipe!</button>
+            </div>
+          </form>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
 
 {% endblock %}

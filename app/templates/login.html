@@ -5,16 +5,17 @@
 {% endblock %}
 
 {% block body %}
+  <div class="container-fluid h-100 d-flex flex-row background-img">
     <div id="forms">
       <!--add form to collect details-->
       <form action="" class="login-form" method="post" novalidate>
         <h1>Login</h1>
-        <!--generates a hidden field that includes a token that is used to 
+        <!--generates a hidden field that includes a token that is used to
           protect the form against CSRF attacks-->
         {{ form.hidden_tag() }}
         <div class="txtb-fields">
           <p>
-            {{ form.username.label }} 
+            {{ form.username.label }}
             {{ form.username() }}
           </p>
           <!-- Prints warning if left blank -->
@@ -22,7 +23,7 @@
           <div class="error">[{{ error }}]</div>
           {% endfor %}
           <p>
-            {{ form.password.label }} 
+            {{ form.password.label }}
             {{ form.password() }}
           </p>
           <!-- Prints warning if left blank -->
@@ -32,7 +33,7 @@
         </div>
         <div class="txtb remember_me">
           <p>
-            {{ form.remember_me() }} 
+            {{ form.remember_me() }}
             {{ form.remember_me.label }}
           </p>
           <button type=submit class="logbtn">Login</button>
@@ -46,6 +47,7 @@
         </div>
       </form>
     </div>
-    
+  </div>
+
 
 {% endblock %}
