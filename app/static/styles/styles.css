@@ -150,7 +150,7 @@ nav a {
 .alert {
   padding: 5px;
   margin: auto;
-  margin-top: 95px;
+  margin-top: 60px;
   font-size: 1rem;
   width: 60%;
 }
@@ -368,28 +368,37 @@ nav a {
 /* left  */
 .search {
   background-color: #0081a7;
-  height: 100%;
-}
-
-.search-form label {
-  color: #ced4da;
-  font-size: 1.2rem;
+  left: 0px;
 }
 
 /* right  */
 .random {
   background-color: #f07167;
+  right: 0px;
+}
+
+.search, .random {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
   height: 100%;
+  width: 50%;
+}
+.search-form label {
+  color: #ced4da;
+  font-size: 1.2rem;
 }
 
 .search-form, .random-form {
-  margin-top: 50%;
+  margin-top: 40%;
 }
 
 #recipe-search {
-  width: 50%;
+  width: 80%;
   display: block;
   margin: 0 auto;
+  text-align: center;
 }
 
 #random-recipe {

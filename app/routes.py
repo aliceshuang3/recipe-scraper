@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe
 from werkzeug.urls import url_parse
 from app.forms import ResetRequestForm, ResetPasswordForm
-from app.email import *
+from app.emails import *
 
 @app.route("/", methods=["GET"])
 def index():

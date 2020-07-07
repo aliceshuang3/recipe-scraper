@@ -5,45 +5,47 @@
 {% endblock %}
 
 {% block body %}
-    <div id="forms">
-        <form action="" class="login-form signup" method="post" novalidate>
-            {{ form.hidden_tag() }}
-            <div class="txtb-fields signup">
-                <br>
-                <h1>Sign Up</h1>
-                <p>
-                    {{ form.username.label }}
-                    {{ form.username() }}
-                </p>
-                <!-- Prints warning if left blank -->
-                {% for error in form.username.errors %}
-                <div class="error">[{{ error }}]</div>
-                {% endfor %}
-                <p>
-                    {{ form.email.label }}
-                    {{ form.email }}
-                </p>
-                {% for error in form.email.errors %}
-                <div class="error">[{{ error }}]</div>
-                {% endfor %}
-                <p>
-                    {{ form.password.label }}
-                    {{ form.password() }}
-                </p>
-                {% for error in form.password.errors %}
-                <div class="error">[{{ error }}]</div>
-                {% endfor %}
-                <p>
-                    {{ form.password2.label }}
-                    {{ form.password2() }}
-                </p>
-                {% for error in form.password2.errors %}
-                <div class="error">[{{ error }}]</div>
-                {% endfor %}
-            </div>
-            <div class="txtb">
-                <button type=submit class="logbtn">Sign Up</button>
-            </div>
-        </form>
+    <div class="container-fluid h-100 d-flex flex-row background-img">
+        <div id="forms">
+            <form action="" class="login-form signup" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <div class="txtb-fields signup">
+                    <br>
+                    <h1>Sign Up</h1>
+                    <p>
+                        {{ form.username.label }}
+                        {{ form.username() }}
+                    </p>
+                    <!-- Prints warning if left blank -->
+                    {% for error in form.username.errors %}
+                    <div class="error">[{{ error }}]</div>
+                    {% endfor %}
+                    <p>
+                        {{ form.email.label }}
+                        {{ form.email }}
+                    </p>
+                    {% for error in form.email.errors %}
+                    <div class="error">[{{ error }}]</div>
+                    {% endfor %}
+                    <p>
+                        {{ form.password.label }}
+                        {{ form.password() }}
+                    </p>
+                    {% for error in form.password.errors %}
+                    <div class="error">[{{ error }}]</div>
+                    {% endfor %}
+                    <p>
+                        {{ form.password2.label }}
+                        {{ form.password2() }}
+                    </p>
+                    {% for error in form.password2.errors %}
+                    <div class="error">[{{ error }}]</div>
+                    {% endfor %}
+                </div>
+                <div class="txtb">
+                    <button type=submit class="logbtn">Sign Up</button>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}

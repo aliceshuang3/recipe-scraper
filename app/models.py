@@ -60,7 +60,12 @@ class User(UserMixin, db.Model):
             return None
         # if we are able to get the user id without getting an exception
         return User.query.get(user_id)
-        
+    """
+    def __init__(self, username, email, password_hash):
+        username = self.username
+        email = self.email
+        password_hash = self.password_hash
+    """
 class Recipe(db.Model):
     __tablename__ = 'recipes'
     id = db.Column(db.Integer, primary_key=True)
@@ -68,19 +73,45 @@ class Recipe(db.Model):
     recipe_link = db.Column(db.Text)
     image_link = db.Column(db.Text)
     instructions = db.Column(db.Text)
-    preptime = db.Column(db.Text)
-    cooktime = db.Column(db.Text)
+    servings = db.Column(db.Text)
     # one to many relationship between recipe and ingredients
     ingredients = db.relationship("Ingredient", backref='recipe') 
 
     def __repr__(self):
-        return '<Recipe {}>'.format(self.body)
-
+        return '<Recipe {}>'.format(self.recipe_name)
+    """
+    def __init__(self, recipe_name, recipe_link, image_link, instructions, servings):
+        recipe_name = self.recipe_name
+        recipe_link = self.recipe_link
+        image_link = self.image_link
+        instructions = self.instructions
+        servings = self.servings
+    """
 class Ingredient(db.Model):
     __tablename__ = 'ingredients'
     id = db.Column(db.Integer, primary_key=True)
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'))
     ingredient_name = db.Column(db.Text)
+
+    def __repr__(self):
+        return '<Ingredient {}>'.format(self.ingredient_name)
+    """
+    def __init__(self, ingredient_name):
+        ingredient_name = self.ingredient_name
+    """
+#Class to add, update and delete data via SQLALchemy sessions
+class CRUD():
+    def add(self, resource):
+        db.session.add(resource)
+        return db.session.commit()
+
+    def update(self):
+        return db.session.commit()
+        
+    def delete(self, resource):
+        db.session.delete(resource)
+        return db.session.commit()
+
 
 # Application will configure a user loader function that can be called 
 # to load a user given the ID for the Flask-Login extension 
