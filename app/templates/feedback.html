@@ -7,16 +7,17 @@
 {% block body %}
     <div class="container-fluid h-100 d-flex flex-row background-img">
         <div id="forms">
-            <form action="" class="login-form signup formBase" method="post" novalidate>
+            <form action="{{ url_for('feedback') }}" class="login-form signup feedback formBase" method="post">
                 {{ form.hidden_tag() }}
                 <div class="txtb-fields">
-                    <h1>Sign Up</h1>
+                    <br>
+                    <h1>Feedback</h1>
                     <p>
-                        {{ form.username.label }}
-                        {{ form.username() }}
+                        {{ form.name.label }}
+                        {{ form.name }}
                     </p>
                     <!-- Prints warning if left blank -->
-                    {% for error in form.username.errors %}
+                    {% for error in form.name.errors %}
                     <div class="error">[{{ error }}]</div>
                     {% endfor %}
                     <p>
@@ -27,21 +28,27 @@
                     <div class="error">[{{ error }}]</div>
                     {% endfor %}
                     <p>
-                        {{ form.password.label }}
-                        {{ form.password() }}
+                        {{ form.subject.label }}
+                        {{ form.subject }}
                     </p>
-                    {% for error in form.password.errors %}
+                    {% for error in form.subject.errors %}
                     <div class="error">[{{ error }}]</div>
                     {% endfor %}
-                    <p>
-                        {{ form.password2.label }}
-                        {{ form.password2() }}
-                    </p>
-                    {% for error in form.password2.errors %}
+                    <div class="feedback-field">
+                        <p>
+                            {{ form.feedbackBody.label }}
+                        </p>
+                        <p style="margin-top:15px">
+                            {{ form.feedbackBody }}
+                        </p>
+                    </div>
+                    {% for error in form.feedbackBody.errors %}
                     <div class="error">[{{ error }}]</div>
                     {% endfor %}
                 </div>
-                <button type=submit class="logbtn">Sign Up</button>
+                <div class="txtb">
+                    <button type=submit class="logbtn">Send</button>
+                </div>
             </form>
         </div>
     </div>

@@ -1,5 +1,5 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from flask_wtf import FlaskForm, RecaptchaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextField, TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from app.models import User
 
@@ -42,3 +42,9 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
         'Confirm Password', validators=[DataRequired(), EqualTo('password')])
+
+class FeedbackForm(FlaskForm):
+    name = TextField("Name", validators=[DataRequired()])
+    email = TextField("Email", validators=[DataRequired(), Email()])
+    subject = TextField("Subject", validators=[DataRequired()])
+    feedbackBody = TextAreaField("Feedback", validators=[DataRequired()])

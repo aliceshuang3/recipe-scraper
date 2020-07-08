@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid h-100 d-flex flex-row background-img">
+    <div class="about basepage">
+        <h2>
+            About Us
+        </h2>
+        <br>
+        <p>
+            Hi there, we are Jacquelyn Chow and Alice Huang!<br>
+            We're also Swarthmore College students who are beginner cooks and always have a hard time coming up with what to cook.
+            <br><br>
+            We hope that with our site in your arsenal, deciding on what to make and how to use up old ingredients is much easier.
+        </p>
+        <br><br>
+        <p>
+            Let us know how we can make our site better by telling us more features or sites you want to see on our database.
+        </p>
+        <a href="{{url_for('feedback')}}">
+            <button type="button" class="btn btn-outline-primary btn-lg round">
+              Give Feedback
+            </button>
+          </a>
+    </div>
+</div>
+{% endblock %}

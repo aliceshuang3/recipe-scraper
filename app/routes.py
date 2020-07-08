@@ -4,12 +4,34 @@ from app.forms import LoginForm, SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe
 from werkzeug.urls import url_parse
-from app.forms import ResetRequestForm, ResetPasswordForm
+from app.forms import ResetRequestForm, ResetPasswordForm, FeedbackForm
 from app.emails import *
 
 @app.route("/", methods=["GET"])
 def index():
     return render_template("home.html")
+
+@app.route("/about", methods=["GET"])
+def about():
+    return render_template("about.html")
+
+@app.route("/feedback", methods=["GET", "POST"])
+def feedback():
+    form = FeedbackForm()
+    if request.method == 'POST':
+        if not form.validate_on_submit():
+            flash('All fields are required.', "warning")
+            return render_template('feedback.html', form=form)
+        else:
+            email_feedback(name=form.name.data,
+               subject=form.subject.data,
+               sender=form.email.data,
+               recipient=app.config['MAIL_USERNAME'],
+               feedback_body=form.feedbackBody.data)
+        flash('Thank you for your feedback.', "success")
+        return redirect(url_for('index'))
+    elif request.method == 'GET':
+        return render_template("feedback.html", form=form)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():

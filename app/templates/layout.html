@@ -18,7 +18,7 @@
       <!-- NAVBAR -->
       <header class="container-fluid">
         <a href="{{ url_for('index') }}"><h1 class="logo">
-          <img style="margin-right:10px; height:60px;" src="{{ url_for('static', filename='logo.png') }}">
+          <img style="margin-left: 15px; margin-right:10px; height:60px;" src="{{ url_for('static', filename='logo.png') }}">
           Novice Chef</h1></a>
         <form action="">
           <input type="checkbox" id="nav-toggle" class="nav-toggle">
@@ -26,6 +26,9 @@
             <ul>
               <li>
                 <a href="{{ url_for('index') }}">Home</a>
+              </li>
+              <li>
+                <a href="{{ url_for('about') }}">About</a>
               </li>
               <!-- If current user is not logged in -->
               {% if current_user.is_anonymous %}

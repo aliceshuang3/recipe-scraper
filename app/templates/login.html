@@ -8,7 +8,7 @@
   <div class="container-fluid h-100 d-flex flex-row background-img">
     <div id="forms">
       <!--add form to collect details-->
-      <form action="" class="login-form" method="post" novalidate>
+      <form action="" class="login-form login formBase" method="post" novalidate>
         <h1>Login</h1>
         <!--generates a hidden field that includes a token that is used to
           protect the form against CSRF attacks-->
@@ -31,13 +31,13 @@
           <div class="error">[{{ error }}]</div>
           {% endfor %}
         </div>
-        <div class="txtb remember_me">
+        <div class="remember_me">
           <p>
             {{ form.remember_me() }}
             {{ form.remember_me.label }}
           </p>
-          <button type=submit class="logbtn">Login</button>
         </div>
+        <button type=submit class="logbtn">Login</button>
         <!-- SIGN UP link (for new users) -->
         <div class="bottom-text">
           <p>
