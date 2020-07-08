@@ -11,6 +11,7 @@
       <link rel="stylesheet" href="{{ url_for('static',filename='/styles/styles.css') }}">
       <!--google font-->
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+      <!--icons-->
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
       <!-- Favicon -->
       <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
@@ -18,7 +19,7 @@
       <!-- NAVBAR -->
       <header class="container-fluid">
         <a href="{{ url_for('index') }}"><h1 class="logo">
-          <img style="margin-left: 15px; margin-right:10px; height:60px;" src="{{ url_for('static', filename='logo.png') }}">
+          <img style="margin-left: 15px; margin-right:5px; height:60px;" src="{{ url_for('static', filename='logo.png') }}">
           Novice Chef</h1></a>
         <form action="">
           <input type="checkbox" id="nav-toggle" class="nav-toggle">

@@ -44,7 +44,7 @@
 /* overlay background for header */
 /* nav bar color  */
 :root {
-  --background: rgb(0, 175, 185, 0.75);
+  --background: rgb(0, 175, 185, 0);
 }
 header {
   text-align: center;
@@ -274,13 +274,14 @@ form label {
 }
 
 /* NAVBAR when screen is larger than 1050px */
-@media screen and (min-width: 1050px) {
+@media screen and (min-width: 1130px) {
   .nav-toggle-label {
     display: none;
   }
   header {
     display: grid;
     grid-template-columns: auto auto auto auto;
+    background: rgb(0, 175, 185, 1);
   }
   .logo {
     grid-column: 1 / 2;
@@ -376,6 +377,11 @@ form label {
   width: 102%;
 }
 
+.username h4 {
+  margin-top: 150px;
+  color: #fdfcfc;
+  margin-left: -35px;
+}
 /* left  */
 .search {
   background-color: #0081a7;
@@ -388,7 +394,7 @@ form label {
   right: 0px;
 }
 
-.search, .random {
+.random, .search {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -396,24 +402,43 @@ form label {
   height: 100%;
   width: 50%;
 }
-.search-form label {
-  color: #ced4da;
+
+.search-text {
+  top: 50%;
+  left: 23%;
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+  position: fixed;
+}
+.search-form {
+  top: 55%;
+  left: 25%;
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+  position: fixed;
+}
+.search-text h3 {
+  color: #fdfcfc;
   font-size: 1.2rem;
 }
+.recipe-search {
+  width: 60%;
+}
 
-.search-form, .random-form {
-  margin-top: 40%;
+.random-form {
+  margin-top: 20%;
 }
 
 #recipe-search {
   width: 80%;
-  display: block;
+  height: 45px;
   margin: 0 auto;
   text-align: center;
+  display: block;
 }
 
 #random-recipe {
-  margin-top: 35px;
+  height: 45px;
 }
 
 /* Feedback Form */

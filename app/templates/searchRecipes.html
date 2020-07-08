@@ -5,31 +5,37 @@
 {% endblock %}
 
 {% block body %}
-    {% if not current_user.is_anonymous %}
-    <h4 class="login">Logged in as: <strong>{{ current_user.username }}</strong></h4>
-    {% endif %}
 
-    <div class="container-fluid h-100 d-flex flex-row search-page">
-      <!-- <div class="row w-1"> -->
-        <!-- left half  -->
-        <div class="col search h-100">
-          <!-- search input  -->
-          <form>
-            <div class="form-group search-form">
-              <label for="recipe-search">Help me use up my: </label>
-              <input type="text" id="recipe-search" class="form-control form-control-lg" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
-            </div>
-          </form>
+<div class="container-fluid h-100 d-flex flex-row search-page">
+    <!-- left half  -->
+    <div class="col search h-100">
+      <!-- search input  -->
+      <form>
+        <div class="search-text d-flex">
+          <h3>Help me use up my: </h3>
         </div>
-        <!-- right half  -->
-        <div class="col random h-100">
-          <form>
-            <div class="form-group random-form">
-              <button type="button" id="random-recipe" class="btn btn-outline-light btn-lg">Find me a recipe!</button>
-            </div>
-          </form>
+        <div class="search-form d-flex">
+          <input type="text" id="recipe-search" class="form-control form-control-lg" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
+          <button type="button" id="recipe-search-button" class="btn btn-outline-light btn-lg" >
+            <i class="fa fa-search" style="color:#f07167;" aria-hidden="true"></i>
+          </button>
         </div>
-      <!-- </div> -->
+      </form>
     </div>
+    <!-- right half  -->
+    <div class="col random h-100">
+      <form>
+        <div class="form-group random-form">
+          <button type="button" id="random-recipe" class="btn btn-outline-light btn-lg">Find me a recipe!</button>
+        </div>
+      </form>
+    </div>
+    <!-- </div> -->
+    <div class="col h-50 username">
+      {% if not current_user.is_anonymous %}
+      <h4>Logged in as: &ensp;<strong>&ensp;{{ current_user.username }}</strong></h4>
+      {% endif %}
+    </div>
+</div>
 
 {% endblock %}

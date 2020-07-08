@@ -1,0 +1,92 @@
+2020-07-07 18:15:51,820 ERROR: Exception on /feedback [GET] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/routes.py", line 24, in feedback
+    return render_template("feedback.html", form=form)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/feedback.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/layout.html", line 89, in top-level template code
+    {% block body %}
+  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/feedback.html", line 34, in block "body"
+    {% for error in form.password2.errors %}
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'app.forms.FeedbackForm object' has no attribute 'password2'
+2020-07-07 18:16:38,626 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:17:03,889 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:23:25,383 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:25:11,371 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:25:31,422 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:26:59,907 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:27:22,454 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:29:04,389 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:29:32,221 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:29:46,106 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:31:38,224 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:32:14,720 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:33:49,449 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:34:31,511 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:36:05,133 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:36:40,964 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:37:09,844 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:41:12,095 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:41:49,136 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:46:49,416 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:47:40,028 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:49:44,350 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:51:04,984 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:52:19,183 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:52:35,152 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:52:47,035 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:54:10,656 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:54:29,262 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:58:58,886 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:59:12,167 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 18:59:55,412 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:00:07,828 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:00:21,811 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:03:14,484 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:04:29,017 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:09:26,803 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:09:36,651 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:11:08,488 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:11:27,992 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:15:03,752 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:15:41,352 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:16:32,902 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:18:13,742 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:20:35,221 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:21:38,810 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:29:43,739 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:32:04,849 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:32:18,325 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:32:46,992 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:32:55,323 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:33:07,368 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:33:57,676 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:34:08,955 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:34:30,203 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:35:03,816 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 19:35:18,856 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-07 21:26:29,223 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
