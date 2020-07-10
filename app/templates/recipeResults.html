@@ -6,6 +6,12 @@
 
 {% block body %}
 <div class="container-fluid h-100 d-flex flex-row background-img">
-    
+  <div class="db basepage">
+    <p>Recipes (abbreviated list) that contain PUMPKIN, found in database:</p>
+    {% for r in recipes %}
+    <li>{{r}}</li>
+    {% endfor %}
+  </div>
+
 </div>
 {% endblock %}

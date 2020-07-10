@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, request, url_for
 from app import app, db, mail
 from app.forms import LoginForm, SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Recipe
+from app.models import User, Recipe, Ingredient, CRUD
 from werkzeug.urls import url_parse
 from app.forms import ResetRequestForm, ResetPasswordForm, FeedbackForm
 from app.emails import *
@@ -54,14 +54,14 @@ def signup():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    # value of current_user can be a user object from the database 
+    # value of current_user can be a user object from the database
     # or a special anonymous user object if the user did not log in yet
     # check if user is already logged in or not
     if current_user.is_authenticated:
         return redirect(url_for('searchRecipes'))
     # instantiate form object
     form = LoginForm()
-    # if at least one field fails validation, then the function will return False, 
+    # if at least one field fails validation, then the function will return False,
     # and that will cause the form to be rendered back to the user
     if form.validate_on_submit():
         # get username from form filled user
@@ -72,11 +72,11 @@ def login():
             flash("Invalid username or password", "warning")
             # redirect user back to login page
             return redirect(url_for('login'))
-        # registers the user as logged in, so that means that any future pages the user 
+        # registers the user as logged in, so that means that any future pages the user
         # navigates to will have the current_user variable set to that user.
         login_user(user, remember=form.remember_me.data)
-        # If the user navigates to /index, for ex, @login_required will intercept the request & respond with 
-        # a redirect to login page, but will add a query string argument to this URL, making the complete 
+        # If the user navigates to /index, for ex, @login_required will intercept the request & respond with
+        # a redirect to login page, but will add a query string argument to this URL, making the complete
         # redirect URL: /login?next=/index.
         # if user just logged in and was to return to the last page they were on before logging in.
         next_page = request.args.get('next')
@@ -100,7 +100,19 @@ def savedRecipes(username):
 
 @app.route("/results")
 def recipeResults():
-    return render_template('recipeResults.html')
+    # example queries to list results for a given ingredient searched
+    # find all entries in Ingredient that have pumpkin
+    pumpkin_recipes = Ingredient.query.filter(Ingredient.ingredient_name.contains('pumpkin')).all()
+    recipes = []
+    # get first 15
+    for i in range(15):
+        # get corresponding recipe for each ingredient by matching up the recipe id
+        r = Recipe.query.filter_by(id=pumpkin_recipes[i].recipe_id).first().recipe_name
+        if r not in recipes:
+            # add recipe name to list to return
+            recipes.append(r)
+
+    return render_template('recipeResults.html', recipes=recipes)
 
 @app.route("/random")
 def randomRecipe():
