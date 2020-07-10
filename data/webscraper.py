@@ -65,28 +65,31 @@ def getRecipesOnPage(recipe, allRecipes):
             print("Timeout occurred")
         if response.ok:
             getRecipeDetails(response, test_link, allRecipes)
-    else:
-        # recipe compilation
-        test_link = 'https://tasty.co/compilation/' + converted_name
-        try:
-            response = requests.get(test_link, timeout=10)
-        except requests.exceptions.Timeout:
-            print("Timeout occurred")
-        if response.ok:
-            # get all the individual recipes on the compilation page
-            content = BeautifulSoup(response.content, "html.parser")
-            feed = content.findAll('a', attrs={"class": "feed-item"})
-            # for each recipe, make GET request to that recipe's url, call function
-            # to scrape its page
-            for item in feed:
-                test_link = item.get("href")
-                try:
-                    response = requests.get(test_link, timeout=10)
-                except requests.exceptions.Timeout:
-                    print("Timeout occurred")
-
-                if response.ok:
-                    getRecipeDetails(response, test_link, allRecipes)
+    # UPDATE: don't look through compilations because recipes are listed
+    # individually too (results in duplicates!!)
+    
+    # else:
+    #     # recipe compilation
+    #     test_link = 'https://tasty.co/compilation/' + converted_name
+    #     try:
+    #         response = requests.get(test_link, timeout=10)
+    #     except requests.exceptions.Timeout:
+    #         print("Timeout occurred")
+    #     if response.ok:
+    #         # get all the individual recipes on the compilation page
+    #         content = BeautifulSoup(response.content, "html.parser")
+    #         feed = content.findAll('a', attrs={"class": "feed-item"})
+    #         # for each recipe, make GET request to that recipe's url, call function
+    #         # to scrape its page
+    #         for item in feed:
+    #             test_link = item.get("href")
+    #             try:
+    #                 response = requests.get(test_link, timeout=10)
+    #             except requests.exceptions.Timeout:
+    #                 print("Timeout occurred")
+    #
+    #             if response.ok:
+    #                 getRecipeDetails(response, test_link, allRecipes)
 
 
 # helper function
@@ -129,6 +132,6 @@ getSubmenuRecipes("no_bake_desserts", allRecipes)
 getSubmenuRecipes("5_ingredients_or_less", allRecipes)
 getSubmenuRecipes("meal_prep", allRecipes)
 
-# save data in json file at the end after all recipes are scraped 
-with open('data/tastyData.json', 'w', encoding='utf-8') as outfile:
+# save data in json file at the end after all recipes are scraped
+with open('tastyData.json', 'w', encoding='utf-8') as outfile:
     json.dump(allRecipes, outfile, ensure_ascii=False, indent=4)
