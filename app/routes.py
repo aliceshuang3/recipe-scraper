@@ -6,6 +6,7 @@ from app.models import User, Recipe, Ingredient, CRUD
 from werkzeug.urls import url_parse
 from app.forms import ResetRequestForm, ResetPasswordForm, FeedbackForm
 from app.emails import *
+import random
 
 @app.route("/", methods=["GET"])
 def index():
@@ -116,7 +117,15 @@ def recipeResults():
 
 @app.route("/random")
 def randomRecipe():
-    return render_template('randomRecipe.html')
+    # generate random Recipe number
+    recipe_num = random.randint(1, 2055)
+    # query recipe from database, save all details
+    recipe = Recipe.query.filter_by(id=recipe_num).first()
+
+    # query for all corresponding ingredients
+    ingreds = Ingredient.query.filter_by(recipe_id=recipe_num).all()
+
+    return render_template('randomRecipe.html', recipe=recipe, ingreds=ingreds)
 
 @app.route("/logout")
 def logout():

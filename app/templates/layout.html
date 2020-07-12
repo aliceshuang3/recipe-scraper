@@ -26,24 +26,25 @@
           <nav>
             <ul>
               <li>
-                <a href="{{ url_for('index') }}">Home</a>
+                <!-- add active-nav class to whichever link is clicked  -->
+                <a href="{{ url_for('index') }}" class="{{ 'active-nav' if active_page == 'home' else '' }}">Home</a>
               </li>
               <li>
-                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('about') }}" class="{{ 'active-nav' if active_page == 'about' else '' }}">About</a>
               </li>
               <!-- If current user is not logged in -->
               {% if current_user.is_anonymous %}
               <li>
-                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('login') }}" class="{{ 'active-nav' if active_page == 'login' else '' }}">Login</a>
               </li>
               {% endif %}
               <li>
-                <a href="{{ url_for('searchRecipes') }}">Search</a>
+                <a href="{{ url_for('searchRecipes') }}" class="{{ 'active-nav' if active_page == 'search' else '' }}">Search</a>
               </li>
               <!-- Current user is logged in and wants to log out/see saved recipes -->
               {% if not current_user.is_anonymous %}
               <li>
-                <a href="{{ url_for('savedRecipes', username=current_user.username) }}">Saved Recipes</a>
+                <a href="{{ url_for('savedRecipes', username=current_user.username) }}" class="{{ 'active-nav' if active_page == 'saved' else '' }}">Saved Recipes</a>
               </li>
               <li>
                 <a href="{{ url_for('logout') }}">Logout</a>

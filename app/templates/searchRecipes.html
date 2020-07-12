@@ -1,4 +1,6 @@
 {% extends "layout.html" %}
+<!-- add styles when link is active -->
+{% set active_page = "search" %}
 
 {% block heading %}
     <!-- Search for Recipes -->
@@ -16,9 +18,11 @@
         </div>
         <div class="search-form d-flex">
           <input type="text" id="recipe-search" class="form-control form-control-lg" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
-          <button type="button" id="recipe-search-button" class="btn btn-outline-light btn-lg" >
-            <i class="fa fa-search" style="color:#f07167;" aria-hidden="true"></i>
-          </button>
+          <a href="{{url_for('recipeResults')}}">
+            <button type="button" id="recipe-search-button" class="btn btn-outline-light btn-lg" >
+              <i class="fa fa-search" style="color:#f07167;" aria-hidden="true"></i>
+            </button>
+          </a>
         </div>
       </form>
     </div>
@@ -26,7 +30,9 @@
     <div class="col random h-100">
       <form>
         <div class="form-group random-form">
-          <button type="button" id="random-recipe" class="btn btn-outline-light btn-lg">Find me a recipe!</button>
+          <a href="{{url_for('randomRecipe')}}">
+            <button type="button" id="random-recipe" class="btn btn-outline-light btn-lg">Find me a recipe!</button>
+          </a>
         </div>
       </form>
     </div>
