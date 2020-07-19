@@ -12,14 +12,14 @@
     <!-- left half  -->
     <div class="col search h-100">
       <!-- search input  -->
-      <form>
+      <form method="POST">
         <div class="search-text d-flex">
           <h3>Help me use up my: </h3>
         </div>
         <div class="search-form d-flex">
-          <input type="text" id="recipe-search" class="form-control form-control-lg" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
+          <input type="text" name="keyword" id="recipe-search" class="form-control form-control-lg" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
           <a href="{{url_for('recipeResults')}}">
-            <button type="button" id="recipe-search-button" class="btn btn-outline-light btn-lg" >
+            <button type="submit" id="recipe-search-button" class="btn btn-outline-light btn-lg" >
               <i class="fa fa-search" style="color:#f07167;" aria-hidden="true"></i>
             </button>
           </a>

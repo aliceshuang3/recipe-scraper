@@ -88,8 +88,12 @@ def login():
         return redirect(next_page)
     return render_template('login.html', form=form)
 
-@app.route("/searchRecipes", methods=["GET"])
+@app.route("/searchRecipes", methods = ["GET", "POST"])
 def searchRecipes():
+    # when user enters ingredient to search by, pass to results page
+    if request.method == 'POST':
+        keyword_search = request.form.get('keyword')
+        return redirect(url_for('recipeResults', keyword_search=keyword_search))
     return render_template("searchRecipes.html")
 
 @app.route("/saved/<username>")
@@ -101,19 +105,32 @@ def savedRecipes(username):
 
 @app.route("/results")
 def recipeResults():
-    # example queries to list results for a given ingredient searched
-    # find all entries in Ingredient that have pumpkin
-    pumpkin_recipes = Ingredient.query.filter(Ingredient.ingredient_name.contains('pumpkin')).all()
-    recipes = []
-    # get first 15
-    for i in range(15):
-        # get corresponding recipe for each ingredient by matching up the recipe id
-        r = Recipe.query.filter_by(id=pumpkin_recipes[i].recipe_id).first().recipe_name
-        if r not in recipes:
-            # add recipe name to list to return
-            recipes.append(r)
+    # get search term user entered
+    keyword_search = request.args.get('keyword_search')
 
-    return render_template('recipeResults.html', recipes=recipes)
+    # find all entries in Ingredient that have the keyword ingredient
+    pumpkin_recipes = Ingredient.query.filter(Ingredient.ingredient_name.contains(keyword_search)).all()
+    if len(pumpkin_recipes) > 0:
+        recipes = []
+        ingredients = []
+        # get first 15
+        for i in range(15):
+            # get corresponding recipe for each ingredient by matching up the recipe id
+            r = Recipe.query.filter_by(id=pumpkin_recipes[i].recipe_id).first()
+            # query for all corresponding ingredients
+            ingreds = Ingredient.query.filter_by(recipe_id=r.id).all()
+
+            if r not in recipes:
+                # add recipe name to list to return
+                recipes.append(r)
+            # add list of ingredients to list of all lists
+            if ingreds not in ingredients:
+                ingredients.append(ingreds)
+
+        # form key-value pairs to loop through simultaneously in html
+        toReturn = zip(recipes, ingredients)
+
+    return render_template('recipeResults.html', toReturn=toReturn, keyword_search=keyword_search)
 
 @app.route("/random")
 def randomRecipe():
