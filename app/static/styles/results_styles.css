@@ -1,0 +1,338 @@
+/* stylesheet for recipe search results page */
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  transition: all 0.5s ease;
+}
+
+.body {
+  background: linear-gradient(to left, #FF5F6D , #FFC371);
+  font-family: sans-serif;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.containerClass {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.containerClass.closed.allIds { cursor: pointer; }
+.allIds { cursor: pointer; }
+
+.recipe-card-header {
+  width: 100%;
+  height: 200px;
+  background: center / cover;
+  /* background-image: url(https://3.bp.blogspot.com/-v7vHC8w2AKs/TbbD-X8BhTI/AAAAAAAAAJ4/LCcrwIaMgf0/s1600/Mint+Julep+glass+tools.jpg); */
+}
+
+div.containerClass.closed {
+  width: 260px;
+}
+
+.recipe-card-title {
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 0px;
+}
+
+.containerClass.closed .recipe-card-title {
+  padding: 40px 20px 10px 20px;
+  margin-top: -87px;
+  color: white;
+  border: none;
+}
+
+.recipe-card-title:before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+  opacity: 0;
+}
+
+.containerClass.closed .recipe-card-title:before {
+  opacity: 1;
+}
+
+article {
+  padding: 25px 30px;
+  overflow: auto;
+  max-height: 190px;
+}
+
+.containerClass.closed article {
+  max-height: 0px;
+  padding: 0 30px;
+}
+
+.recipe-card-ingredients {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 20px;
+  padding-left: 4px;
+  font-size: 0.9rem;
+}
+
+.recipe-card-ingredients > li {
+  list-style-type: none;
+  display: flex;
+  margin: 4px 0px;
+}
+
+.recipe-card-ingredients > li > .amount {
+  width: 80px;
+  color: #1976D2;
+}
+
+.preperation > div {
+  margin-bottom: 10px;
+}
+
+div.card-column {
+  padding-bottom: 350px;
+}
+
+p.card-label {
+  color: #f07167;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+div.instructions {
+  font-size: 0.9rem;
+}
+
+article p a {
+  color: #00afb9;
+}
+
+h2 {
+  color: white;
+}
+
+/* main styles -------------------------------------------------------------*/
+@font-face {
+  font-family: 'Montserrat', sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  font-weight: 400;
+}
+
+.basepage {
+  display: block;
+  margin: 0 auto;
+  margin-top: 140px;
+  padding: 30px 60px;
+}
+
+:root {
+  --background: rgb(0, 175, 185, 0);
+}
+
+header {
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+  color: #fdfcfc;
+  background: var(--background);
+}
+
+.logo {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 30px;
+  margin: 10px;
+  font-weight: 700;
+  color: #fdfcfc;
+}
+
+/* Remove underline from all links */
+a:hover {
+  color: #f07167;
+  text-decoration: none;
+}
+
+/* highlighted nav element stays pink  */
+a.active-nav {
+  color: #f07167;
+}
+
+/* NAVBAR when screen is small */
+nav {
+  background: var(--background);
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+nav a {
+  color: #fdfcfc;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 300ms;
+}
+.nav-toggle {
+  display: none;
+}
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+.nav-toggle-label span::before{
+  bottom: 7px;
+}
+.nav-toggle-label span::after{
+  top: 7px;
+}
+
+/* center all body content */
+.content {
+  /* padding-top: 100px; */
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/* alerts */
+.alert {
+  padding: 5px;
+  margin: auto;
+  margin-top: 60px;
+  font-size: 1rem;
+  width: 60%;
+}
+
+@media screen and (min-width: 1130px) {
+  .nav-toggle-label {
+    display: none;
+  }
+  header {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background: rgb(0, 175, 185, 1);
+  }
+  .logo {
+    grid-column: 1 / 2;
+  }
+  nav {
+    all: unset;
+    grid-column: 4 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 25px;
+  }
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+  nav ul{
+    display: flex;
+  }
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  nav a::before {
+    content: "";
+    display: block;
+    height: 5px;
+    background: #333;
+    position: absolute;
+    top: -.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transform-origin: center;
+    transition: transform ease-in-out 250ms;
+  }
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }
+}
+
+/* search results page styles ********************************************/
+.search-results-page {
+  background-color: #0081a7;
+  background-size: cover;
+  display: grid;
+  overflow: auto;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 102%;
+}
+
+.results-page {
+  margin-top: 200px;
+}
