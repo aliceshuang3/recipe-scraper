@@ -26,7 +26,12 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))    
-    recipes = db.relationship('Recipe', secondary=saved_recipes, backref='users', lazy='dynamic')
+    user_recipe_relationship = db.relationship('Recipe', 
+                secondary=saved_recipes, 
+                primaryjoin=(saved_recipes.c.user_id == id),
+                secondaryjoin=(saved_recipes.c.recipe_id == id),
+                backref=db.backref('users', lazy='dynamic'), 
+                lazy='dynamic')
 
     # to disable concurrent, simultaneous logins per user:
     # when a user logs in, generate a session token and save it in the db
@@ -60,6 +65,17 @@ class User(UserMixin, db.Model):
             return None
         # if we are able to get the user id without getting an exception
         return User.query.get(user_id)
+    def saveRecipe(self, recipe):
+        if not self.is_following(recipe):
+            self.user_recipe_relationship.append(recipe)
+    def unsaveRecipe(self, recipe):
+        if self.is_following(recipe):
+            self.user_recipe_relationship.remove(recipe)
+    def is_following(self, recipe):
+        return self.user_recipe_relationship.filter(
+            saved_recipes.c.recipe_id == recipe.id).count() > 0
+    def followed_recipes(self, user):
+        return user.user_recipe_relationship.order_by(Recipe.recipe_name).all()
     """
     def __init__(self, username, email, password_hash):
         username = self.username
