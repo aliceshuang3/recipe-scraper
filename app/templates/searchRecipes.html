@@ -10,28 +10,33 @@
 
 <div class="container-fluid h-100 d-flex flex-row search-page">
     <!-- left half  -->
-    <div class="col search h-100">
+    <div class="col search h-100 w-50">
       <!-- search input  -->
       <form method="POST">
-        <div class="search-text d-flex">
-          <h3>Help me use up my: </h3>
-        </div>
-        <div class="search-form d-flex">
-          <input type="text" name="keyword" id="recipe-search" class="form-control form-control-lg" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
-          <a href="{{url_for('recipeResults')}}">
-            <button type="submit" id="recipe-search-button" class="btn btn-outline-light btn-lg" >
-              <i class="fa fa-search" style="color:#f07167;" aria-hidden="true"></i>
-            </button>
-          </a>
+        <div class="search-form">
+          <div class="search-text d-flex">
+            <h3>Help me use up my: </h3>
+          </div>
+          <div class="d-flex">
+            <input type="text" name="keyword" id="recipe-search" class="form-control" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
+            <a href="{{url_for('recipeResults')}}">
+              <button type="submit" id="recipe-search-button" class="btn btn-outline-light" >
+                <i class="fa fa-search" style="color:#f07167;" aria-hidden="true"></i>
+              </button>
+            </a>
+          </div>
         </div>
       </form>
     </div>
     <!-- right half  -->
-    <div class="col random h-100">
+    <div class="col random h-100 w-50">
       <form>
         <div class="form-group random-form">
+          <div class="adventurous-text d-flex">
+            <h3>Feeling adventurous?</h3>
+          </div>
           <a href="{{url_for('randomRecipe')}}">
-            <button type="button" id="random-recipe" class="btn btn-outline-light btn-lg">Find me a recipe!</button>
+            <button type="button" id="random-recipe" class="btn btn-outline-light">Find me a recipe!</button>
           </a>
         </div>
       </form>

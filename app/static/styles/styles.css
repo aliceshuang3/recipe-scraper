@@ -380,12 +380,13 @@ form label {
   transform: translate(-50%, -50%);
   text-align: center;
   width: 102%;
+  min-width: 100%;
+  margin: auto;
 }
 
 .username h4 {
   margin-top: 150px;
   color: #fdfcfc;
-  margin-left: -35px;
 }
 /* left  */
 .search {
@@ -409,37 +410,87 @@ form label {
 }
 
 .search-text {
-  top: 50%;
-  left: 23%;
-  margin: 0 auto;
-  transform: translate(-50%, -50%);
-  position: fixed;
+  margin-left: 30px;
 }
+
 .search-form {
-  top: 55%;
+  top: 50%;
   left: 25%;
   margin: 0 auto;
   transform: translate(-50%, -50%);
   position: fixed;
 }
-.search-text h3 {
+
+/* make font smaller when screen gets small */
+.search-text h3, .adventurous-text h3 {
   color: #fdfcfc;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
+
+#recipe-search, #random-recipe {
+  font-size: 1rem;
+}
+
+/* buttons/input are large but get smaller when window shrinks */
+@media screen and (min-width: 800px) {
+  .search-text h3, .adventurous-text h3 {
+    font-size: 1.3rem;
+  }
+
+  #recipe-search-button {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+  }
+
+  #recipe-search {
+    width: 80%;
+    height: 45px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+  }
+
+  #random-recipe {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+  }
+
+  .search-text {
+    padding: 20px;
+    left: 50%;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    margin-top: -30px;
+    min-width: 300px;
+  }
+
+  .adventurous-text {
+    padding: 20px;
+    left: 76%;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    min-width: 300px;
+    margin-top: -30px;
+  }
+}
+
 .recipe-search {
   width: 60%;
 }
 
 .random-form {
-  margin-top: 20%;
-}
-
-#recipe-search {
-  width: 80%;
-  height: 45px;
-  margin: 0 auto;
-  text-align: center;
-  display: block;
+  top: 50%;
+  margin-top: 12px;
 }
 
 #random-recipe {
