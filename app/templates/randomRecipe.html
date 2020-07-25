@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
-{% set active_page = "random" %}
 
 {% block heading %}
     Recipe of the Day
 {% endblock %}
 
 {% block body %}
+
 <div class="container-fluid h-100 d-flex flex-row random-page">
   <div class="random-page h-100 basepage">
     <!-- left half  -->
@@ -14,6 +14,13 @@
       <a href="{{ recipe.recipe_link }}" target="_blank">
         <img src="{{ recipe.image_link }}" id="recipe-img" width="350" alt="{{ recipe.recipe_name }}">
       </a>
+      <div class="save-btn">
+        {% if current_user.is_following(recipe) %}
+        <a href="#" class="unsaves" id={{recipe.id}}>Unsave</a>
+        {% else %}
+        <a href="{{ url_for('savedRecipes') }}" class="saves" id={{recipe.id}}>Save</a>
+        {% endif %}
+      </div>
     </div>
     <!-- right half  -->
     <div class="col random-text h-100">

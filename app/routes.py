@@ -96,41 +96,43 @@ def searchRecipes():
         return redirect(url_for('recipeResults', keyword_search=keyword_search))
     return render_template("searchRecipes.html")
 
-@app.route("/saved/<username>")
+@app.route("/saved")
 @login_required # function is protected and will not allow access to users that aren't authenticated
-def savedRecipes(username):
-    # if there are no results automatically sends a 404 error back to client
-    user = User.query.filter_by(username=username).first_or_404()
-    return render_template('savedRecipes.html', user=user)
+def savedRecipes():
+    # user is logged in, then render their saved recipes
+    if current_user.is_authenticated:
+        return render_template('savedRecipes.html', user=current_user)
+    # user isn't logged in yet, render login page
+    return render_template('login.html', form=form)
 
 @app.route("/results")
 def recipeResults():
     # get search term user entered
-    keyword_search = request.args.get('keyword_search')
+     keyword_search = request.args.get('keyword_search')
 
-    # find all entries in Ingredient that have the keyword ingredient
-    pumpkin_recipes = Ingredient.query.filter(Ingredient.ingredient_name.contains(keyword_search)).all()
-    if len(pumpkin_recipes) > 0:
-        recipes = []
-        ingredients = []
-        # get first 15
-        for i in range(15):
-            # get corresponding recipe for each ingredient by matching up the recipe id
-            r = Recipe.query.filter_by(id=pumpkin_recipes[i].recipe_id).first()
-            # query for all corresponding ingredients
-            ingreds = Ingredient.query.filter_by(recipe_id=r.id).all()
+     # find all entries in Ingredient that have the keyword ingredient
+     pumpkin_recipes = Ingredient.query.filter(Ingredient.ingredient_name.contains(keyword_search)).all()
+     if len(pumpkin_recipes) > 0:
+         recipes = []
+         ingredients = []
+         # get first 15
+         for i in range(15):
+             # get corresponding recipe for each ingredient by matching up the recipe id
+             r = Recipe.query.filter_by(id=pumpkin_recipes[i].recipe_id).first()
+             # query for all corresponding ingredients
+             ingreds = Ingredient.query.filter_by(recipe_id=r.id).all()
 
-            if r not in recipes:
-                # add recipe name to list to return
-                recipes.append(r)
-            # add list of ingredients to list of all lists
-            if ingreds not in ingredients:
-                ingredients.append(ingreds)
+             if r not in recipes:
+                 # add recipe name to list to return
+                 recipes.append(r)
+             # add list of ingredients to list of all lists
+             if ingreds not in ingredients:
+                 ingredients.append(ingreds)
 
-        # form key-value pairs to loop through simultaneously in html
-        toReturn = zip(recipes, ingredients)
+         # form key-value pairs to loop through simultaneously in html
+         toReturn = zip(recipes, ingredients)
 
-    return render_template('recipeResults.html', toReturn=toReturn, keyword_search=keyword_search)
+     return render_template('recipeResults.html', toReturn=toReturn, keyword_search=keyword_search)
 
 @app.route("/random")
 def randomRecipe():
@@ -177,6 +179,23 @@ def reset_token(token):
         flash("Your password has been reset. You are now able to log in.", "success")
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+@app.route('/saves', methods=['POST'])
+@login_required
+def saves(username):
+    recipeID = request.form['recipeID']
+    action = request.form['action']
+    user = User.query.filter_by(username=username).first_or_404()
+    if recipeID and action:
+        recipe = Recipe.query.filter_by(id=int(recipeID)).first_or_404()
+        if action == 'saves':
+            user.saveRecipe(recipe)
+            db.session.commit()
+            return jsonify({'status':'OK', 'id':recipeID, 'action':action})
+        if action == 'unsaves':
+            user.unsaveRecipe(recipe)
+            db.session.commit()
+            return jsonify({'status':'OK', 'id':recipeID, 'action':action})
 
 """
 @app.cli.command("initdb")
