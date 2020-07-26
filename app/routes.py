@@ -101,7 +101,9 @@ def searchRecipes():
 def savedRecipes():
     # user is logged in, then render their saved recipes
     if current_user.is_authenticated:
-        return render_template('savedRecipes.html', user=current_user)
+        recipes = current_user.followed_recipes()
+        return render_template('savedRecipes.html', user=current_user, recipes=recipes)
+    flash("Login or Sign Up to save recipes", "info")
     # user isn't logged in yet, render login page
     return render_template('login.html', form=form)
 
@@ -182,19 +184,21 @@ def reset_token(token):
 
 @app.route('/saves', methods=['POST'])
 @login_required
-def saves(username):
+def saves():
     recipeID = request.form['recipeID']
     action = request.form['action']
-    user = User.query.filter_by(username=username).first_or_404()
+    user = current_user
     if recipeID and action:
         recipe = Recipe.query.filter_by(id=int(recipeID)).first_or_404()
         if action == 'saves':
             user.saveRecipe(recipe)
             db.session.commit()
+            print("updated save")
             return jsonify({'status':'OK', 'id':recipeID, 'action':action})
         if action == 'unsaves':
             user.unsaveRecipe(recipe)
             db.session.commit()
+            print("updated unsave")
             return jsonify({'status':'OK', 'id':recipeID, 'action':action})
 
 """

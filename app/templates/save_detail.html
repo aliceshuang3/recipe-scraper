@@ -1,0 +1,8 @@
+
+{% if current_user.is_following(recipe) %}
+    <a href="#"><button type="submit" class="unsaves" id={{recipe.id}}>Unsave</button>
+    </a>
+{% else %}
+    <a href="{{ url_for('savedRecipes') }}"><button type="submit" class="saves" id={{recipe.id}}>Save</button>
+    </a>
+{% endif %}
