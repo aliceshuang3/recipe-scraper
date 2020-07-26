@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, request, url_for
+from flask import render_template, flash, redirect, request, url_for, jsonify
 from app import app, db, mail
 from app.forms import LoginForm, SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -101,7 +101,7 @@ def searchRecipes():
 def savedRecipes():
     # user is logged in, then render their saved recipes
     if current_user.is_authenticated:
-        recipes = current_user.followed_recipes()
+        recipes = current_user.followed_recipes(current_user)
         return render_template('savedRecipes.html', user=current_user, recipes=recipes)
     flash("Login or Sign Up to save recipes", "info")
     # user isn't logged in yet, render login page
@@ -193,12 +193,10 @@ def saves():
         if action == 'saves':
             user.saveRecipe(recipe)
             db.session.commit()
-            print("updated save")
             return jsonify({'status':'OK', 'id':recipeID, 'action':action})
         if action == 'unsaves':
             user.unsaveRecipe(recipe)
             db.session.commit()
-            print("updated unsave")
             return jsonify({'status':'OK', 'id':recipeID, 'action':action})
 
 """
