@@ -111,14 +111,14 @@ def recipeResults():
      keyword_search = request.args.get('keyword_search')
 
      # find all entries in Ingredient that have the keyword ingredient
-     pumpkin_recipes = Ingredient.query.filter(Ingredient.ingredient_name.contains(keyword_search)).all()
-     if len(pumpkin_recipes) > 0:
+     all_matches = Ingredient.query.filter(Ingredient.ingredient_name.contains(keyword_search)).all()
+     if len(all_matches) > 0:
          recipes = []
          ingredients = []
-         # get first 15
-         for i in range(15):
+         
+         for i in range(len(all_matches)):
              # get corresponding recipe for each ingredient by matching up the recipe id
-             r = Recipe.query.filter_by(id=pumpkin_recipes[i].recipe_id).first()
+             r = Recipe.query.filter_by(id=all_matches[i].recipe_id).first()
              # query for all corresponding ingredients
              ingreds = Ingredient.query.filter_by(recipe_id=r.id).all()
 

@@ -40,6 +40,8 @@
                   </div>
                 </div>
               </article>
+              <!-- save button -->
+              <button type="button" id="save{{r.id}}" class="btn btn-outline-info btn-sm save-recipe">SAVE</button>
             </div>
             </div>
           </div>
@@ -57,6 +59,15 @@
   function startToggle(n) {
     // get the specific id of the container
     containerId = "container" + n.toString();
+    saveBtnId = "save" + n.toString();
+
+    // hide save button when user clicks open recipe pop-up
+    const btn = byID(saveBtnId);
+    if (btn.style.display === "none") {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
 
     // add or remove the "closed" class to toggle opening/closing
     if (byID(containerId).classList.contains("closed")) {
