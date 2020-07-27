@@ -28,8 +28,6 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))    
     user_recipe_relationship = db.relationship('Recipe', 
                 secondary=saved_recipes, 
-                primaryjoin=(saved_recipes.c.user_id == id),
-                secondaryjoin=(saved_recipes.c.recipe_id == id),
                 backref=db.backref('users', lazy='dynamic'), 
                 lazy='dynamic')
 

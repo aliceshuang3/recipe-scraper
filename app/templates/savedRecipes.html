@@ -8,6 +8,12 @@
 
 {% block body %}
 <div class="container-fluid h-100 d-flex flex-row background-img">
-
+    <div class="recipes">
+        {% for r in recipes %}
+        <p style="margin:100px auto;">
+            Recipe name: {{ r.recipe_name }}
+        </p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

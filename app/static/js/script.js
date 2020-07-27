@@ -1,6 +1,7 @@
-(function() {
-    
+console.log("new js")
+$('document').ready(function (){ 
     $('.saves, .unsaves').click(function(e) {
+        var id = $(this).attr('id');
         var class_ = $(this).attr('class');
         console.log("before ajax");
 

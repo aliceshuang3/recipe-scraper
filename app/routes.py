@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, request, url_for
+from flask import render_template, flash, redirect, request, url_for, jsonify
 from app import app, db, mail
 from app.forms import LoginForm, SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -101,7 +101,9 @@ def searchRecipes():
 def savedRecipes():
     # user is logged in, then render their saved recipes
     if current_user.is_authenticated:
-        return render_template('savedRecipes.html', user=current_user)
+        recipes = current_user.followed_recipes(current_user)
+        return render_template('savedRecipes.html', user=current_user, recipes=recipes)
+    flash("Login or Sign Up to save recipes", "info")
     # user isn't logged in yet, render login page
     return render_template('login.html', form=form)
 
@@ -182,10 +184,10 @@ def reset_token(token):
 
 @app.route('/saves', methods=['POST'])
 @login_required
-def saves(username):
+def saves():
     recipeID = request.form['recipeID']
     action = request.form['action']
-    user = User.query.filter_by(username=username).first_or_404()
+    user = current_user
     if recipeID and action:
         recipe = Recipe.query.filter_by(id=int(recipeID)).first_or_404()
         if action == 'saves':
