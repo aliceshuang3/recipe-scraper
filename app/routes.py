@@ -185,20 +185,21 @@ def reset_token(token):
 @app.route('/saves', methods=['POST'])
 @login_required
 def saves():
-    recipeID = request.form['recipeID']
-    action = request.form['action']
-    user = current_user
-    if recipeID and action:
-        recipe = Recipe.query.filter_by(id=int(recipeID)).first_or_404()
-        if action == 'saves':
-            user.saveRecipe(recipe)
-            db.session.commit()
-            return jsonify({'status':'OK', 'id':recipeID, 'action':action})
-        if action == 'unsaves':
-            user.unsaveRecipe(recipe)
-            db.session.commit()
-            return jsonify({'status':'OK', 'id':recipeID, 'action':action})
-
+    if current_user.is_authenticated:
+        recipeID = request.form['recipeID']
+        action = request.form['action']
+        user = current_user
+        if recipeID and action:
+            recipe = Recipe.query.filter_by(id=int(recipeID)).first_or_404()
+            if action == 'saves':
+                user.saveRecipe(recipe)
+                db.session.commit()
+                return jsonify({'status':'OK', 'id':recipeID, 'action':action})
+            if action == 'unsaves':
+                user.unsaveRecipe(recipe)
+                db.session.commit()
+                return jsonify({'status':'OK', 'id':recipeID, 'action':action})
+                
 """
 @app.cli.command("initdb")
 def reset_db():

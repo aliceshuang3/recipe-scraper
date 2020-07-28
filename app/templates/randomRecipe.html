@@ -14,13 +14,19 @@
       <a href="{{ recipe.recipe_link }}" target="_blank">
         <img src="{{ recipe.image_link }}" id="recipe-img" width="350" alt="{{ recipe.recipe_name }}">
       </a>
+      <!-- if user is logged in -->
+      {% if not current_user.is_anonymous %}
       <div class="save-btn">
         {% if current_user.is_following(recipe) %}
         <a href="#" class="unsaves" id={{recipe.id}}>Unsave</a>
         {% else %}
-        <a href="{{ url_for('savedRecipes') }}" class="saves" id={{recipe.id}}>Save</a>
+        <a href="#" class="saves" id={{recipe.id}}>Save</a>
         {% endif %}
       </div>
+      <!-- send user back to saved recipes to go back to login -->
+      {% else %}
+      <a href="{{ url_for('savedRecipes') }}">Save</a>
+      {% endif %}
     </div>
     <!-- right half  -->
     <div class="col random-text h-100">
