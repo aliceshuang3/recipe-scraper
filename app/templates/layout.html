@@ -64,12 +64,19 @@
 
 
     <body>
-      <div class="container-fluid">
+      <!-- PAGE NAME -->
+      <div class="content container-fluid d-flex flex-row">
+        <h2>
+          {% block heading %}{% endblock %}
+        </h2>
+        {% block body %}
+        {% endblock %}
+
         <!-- Flash Message
-            The get_flashed_messages() function comes from Flask, and returns
-            a list of all the messages that have been registered with flash() previously
-            Once a flash message is requested once through the get_flashed_messages function it is
-            removed from the message list, so it appears only once after the flash() function is called.-->
+        The get_flashed_messages() function comes from Flask, and returns
+        a list of all the messages that have been registered with flash() previously
+        Once a flash message is requested once through the get_flashed_messages function it is
+        removed from the message list, so it appears only once after the flash() function is called.-->
         {% with messages = get_flashed_messages() %}
           {% if messages %}
             {% for category, message in get_flashed_messages(with_categories=True) %}
@@ -77,7 +84,7 @@
                 <div class="center-block">
                   <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                   {{ message }}
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin: -6px;">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
@@ -86,17 +93,10 @@
           {% endif %}
         {% endwith %}
       </div>
-      <!-- PAGE NAME -->
-      <div class="content container-fluid d-flex flex-row">
-        <h2>
-          {% block heading %}{% endblock %}
-        </h2>
-        {% block body %}
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        {% endblock %}
-      </div>
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     </body>
 </html>

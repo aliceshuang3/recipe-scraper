@@ -171,11 +171,15 @@ nav a {
 }
 /* alerts */
 .alert {
-  padding: 5px;
+  padding: 10px;
   margin: auto;
-  margin-top: 60px;
+  margin-top: 100px;
   font-size: 1rem;
   width: 60%;
+}
+.close {
+  margin: -6px;
+  margin-top: -2px;
 }
 
 /* Basic Form layout */
@@ -386,6 +390,7 @@ form label {
 
 .username h4 {
   margin-top: 150px;
+  margin-right: 35px;
   color: #fdfcfc;
 }
 /* left  */
