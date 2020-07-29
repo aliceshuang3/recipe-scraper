@@ -4,6 +4,7 @@
 from bs4 import BeautifulSoup
 import requests
 import json
+import requests
 
 # -----------------------HELPER FUNCTIONS-----------------------------------
 # helper function
@@ -33,6 +34,11 @@ def getRecipeDetails(response, url, allRecipes):
 
     # scrape image
     img = content.find('meta', attrs={"property": "og:image"}).get("content")
+    r = requests.head(img)
+    if r.status_code == requests.codes.ok:
+        img_link = img
+    else:
+        print(name, "not valid image")
 
     # convert scraped data to json
     recipeObject = {
@@ -41,10 +47,12 @@ def getRecipeDetails(response, url, allRecipes):
         "ingredients": ingredList,
         "instructions": instructions,
         "link": url,
-        "image": img
+        "image": img_link
     }
 
-    allRecipes.append(recipeObject)
+    # ensure no duplicates
+    if recipeObject not in allRecipes:
+        allRecipes.append(recipeObject)
 
 
 # helper function
@@ -67,7 +75,7 @@ def getRecipesOnPage(recipe, allRecipes):
             getRecipeDetails(response, test_link, allRecipes)
     # UPDATE: don't look through compilations because recipes are listed
     # individually too (results in duplicates!!)
-    
+
     # else:
     #     # recipe compilation
     #     test_link = 'https://tasty.co/compilation/' + converted_name
