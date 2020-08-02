@@ -436,6 +436,11 @@ form label {
   font-size: 1rem;
 }
 
+.form-control:focus {
+  border-color: #0081a7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 129, 167, 0.25);
+}
+
 /* buttons/input are large but get smaller when window shrinks */
 @media screen and (min-width: 800px) {
   .search-text h3, .adventurous-text h3 {

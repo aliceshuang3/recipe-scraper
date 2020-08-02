@@ -1,6 +1,9 @@
 $('document').ready(function (){ 
     $('.saves, .unsaves').click(function(e) {
         var id = $(this).attr('id');
+        // get rid of "save" word from recipeResults.html id name
+        id = id.slice(4);
+        console.log(id);
         var class_ = $(this).attr('class');
 
         $.ajax({

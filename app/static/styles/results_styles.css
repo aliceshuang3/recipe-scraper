@@ -6,7 +6,7 @@
 }
 
 .body {
-  background: linear-gradient(to left, #FF5F6D , #FFC371);
+  background-color: linear-gradient(290deg, #fdfcdc, #f07167, #fdfcdc);
   font-family: sans-serif;
   margin: 0;
   width: 100vw;
@@ -14,6 +14,7 @@
 }
 
 .containerClass {
+  border-radius: 10px;
   width: 100%;
   max-width: 400px;
   background: white;
@@ -28,6 +29,7 @@
 .allIds { cursor: pointer; }
 
 .recipe-card-header {
+  border-radius: 10px 10px 0 0;
   width: 100%;
   height: 200px;
   background: center / cover;
@@ -110,6 +112,7 @@ article p {
 
 div.card-column {
   padding-bottom: 350px;
+  margin-bottom: 30px;
 }
 
 p.card-label {
@@ -127,7 +130,9 @@ article p a {
 }
 
 h2 {
-  color: rgb(0, 129, 167);
+  color: #fdfcfc;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .save-recipe {
@@ -179,10 +184,13 @@ header {
   font-weight: 700;
   color: #fdfcfc;
 }
-
+a.saves, a.unsaves, a.notLoggedSave {
+  color: rgb(0, 175, 185, 1);
+  font-weight: 600;
+}
 /* Remove underline from all links */
 a:hover {
-  color: #f07167;
+  color: #fdfcfc;
   text-decoration: none;
 }
 
@@ -331,14 +339,13 @@ nav a {
 
 /* search results page styles ********************************************/
 .search-results-page {
-  background-color: white;
-  background-size: cover;
+  color: #333;
   display: grid;
   overflow: auto;
   height: 100%;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 47%;
   transform: translate(-50%, -50%);
   text-align: center;
   width: 102%;

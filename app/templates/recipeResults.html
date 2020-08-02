@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid h-100 d-flex flex-row search-results-page">
+<div class="background-img container-fluid h-100 d-flex flex-row search-results-page">
   <div class="search-results-page h-100 basepage">
     <h2>Search Results for: {{ keyword_search }}</h2>
       <!-- create a card for each recipe  -->
@@ -46,18 +46,18 @@
               <div class="save-btn">
                 {% if current_user.is_following(r) %}
                 <button type="button" class="btn btn-outline-info btn-sm save-recipe">
-                <a href="#" id={{r.id}} class="unsaves">Unsave</a>
+                <a href="#" id=save{{r.id}} class="unsaves">Unsave</a>
                 </button>
                 {% else %}
                 <button type="button" class="btn btn-outline-info btn-sm save-recipe">
-                <a href="#" id={{r.id}} class="saves">Save</a>
+                <a href="#" id=save{{r.id}} class="saves">Save</a>
                 </button>
                 {% endif %}
               </div>
               <!-- send user back to saved recipes to go back to login -->
               {% else %}
               <button type="button" class="btn btn-outline-info btn-sm save-recipe">
-              <a href="{{ url_for('savedRecipes') }}">Save</a>
+              <a class="notLoggedSave" href="{{ url_for('savedRecipes') }}">Save</a>
               </button>
               {% endif %}
             </div>
