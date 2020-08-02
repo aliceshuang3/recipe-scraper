@@ -1,7 +1,4 @@
-2020-07-08 15:15:38,516 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
-2020-07-08 15:19:36,259 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
-2020-07-26 17:11:30,259 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
-2020-07-26 17:11:33,600 ERROR: Exception on / [GET] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
+2020-07-26 17:30:55,284 ERROR: Exception on / [GET] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -17,28 +14,38 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/routes.py", line 13, in index
     return render_template("home.html")
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/home.html", line 1, in top-level template code
-    {% extends "layout.html" %}
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/layout.html", line 22, in template
-    <script text="text/javascript" src="{{ url_for('static'), filename='/js/javascript.js') }}"></script>
-jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
-2020-07-26 17:11:53,737 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
-2020-07-26 17:13:00,307 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
-2020-07-26 17:13:04,778 ERROR: Exception on / [GET] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 838, in update_template_context
+    context.update(func())
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 379, in _user_context_processor
+    return dict(current_user=_get_user())
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/login_manager.py", line 318, in _load_user
+    user = self._user_callback(user_id)
+  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/models.py", line 138, in load_user
+    return User.query.get(int(user_id))
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_sqlalchemy/__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 1354, in _configure_all
+    configure_mappers()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 3280, in configure_mappers
+    mapper._post_configure_properties()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sqlalchemy/orm/mapper.py", line 1970, in _post_configure_properties
+    prop.post_instrument_class(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sqlalchemy/orm/interfaces.py", line 580, in post_instrument_class
+    self.strategy.init_class_attribute(mapper)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sqlalchemy/orm/dynamic.py", line 35, in init_class_attribute
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: On relationship User.user_recipe_relationship, 'dynamic' loaders cannot be used with many-to-one/one-to-one relationships and/or uselist=False.
+2020-07-26 17:32:50,612 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-26 17:40:24,329 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-26 17:40:26,342 ERROR: Exception on /saved [GET] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -52,29 +59,17 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/routes.py", line 13, in index
-    return render_template("home.html")
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/home.html", line 1, in top-level template code
-    {% extends "layout.html" %}
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/layout.html", line 22, in template
-    <script type="text/javascript" src="{{ url_for('static'), filename='/js/javascript.js') }}"></script>
-jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
-2020-07-26 17:14:10,415 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
-2020-07-26 17:14:14,082 ERROR: Exception on / [GET] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/routes.py", line 104, in savedRecipes
+    recipes = current_user.followed_recipes()
+TypeError: followed_recipes() missing 1 required positional argument: 'user'
+2020-07-26 17:41:31,092 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-26 17:43:40,777 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-26 17:44:42,963 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-26 17:46:02,833 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-26 17:46:41,527 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+2020-07-26 17:47:36,383 ERROR: Exception on /results [GET] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,25 +83,23 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/routes.py", line 13, in index
-    return render_template("home.html")
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/home.html", line 1, in top-level template code
-    {% extends "layout.html" %}
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/templates/layout.html", line 22, in template
-    <script type="text/javascript" src="{{ url_for('static'), filename='/js/script.js', version='0') }}"></script>
-jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '='
-2020-07-26 17:14:56,364 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/recipe-scraper/app/__init__.py:63]
+  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/routes.py", line 137, in recipeResults
+    return render_template('recipeResults.html', toReturn=toReturn, keyword_search=keyword_search)
+UnboundLocalError: local variable 'toReturn' referenced before assignment
+2020-07-26 17:49:54,375 ERROR: Exception on /results [GET] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jacquelynchow/personalprojects/recipe-scraper/app/routes.py", line 123, in recipeResults
+    r = Recipe.query.filter_by(id=pumpkin_recipes[i].recipe_id).first()
+IndexError: list index out of range

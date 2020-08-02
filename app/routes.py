@@ -97,15 +97,15 @@ def searchRecipes():
     return render_template("searchRecipes.html")
 
 @app.route("/saved")
-@login_required # function is protected and will not allow access to users that aren't authenticated
+#@login_required # function is protected and will not allow access to users that aren't authenticated
 def savedRecipes():
     # user is logged in, then render their saved recipes
     if current_user.is_authenticated:
         recipes = current_user.followed_recipes(current_user)
         return render_template('savedRecipes.html', user=current_user, recipes=recipes)
-    flash("Login or Sign Up to save recipes", "info")
+    flash("Login or Sign Up to start saving recipes", "info")
     # user isn't logged in yet, render login page
-    return render_template('login.html', form=form)
+    return redirect(url_for('login'))
 
 @app.route("/results")
 def recipeResults():

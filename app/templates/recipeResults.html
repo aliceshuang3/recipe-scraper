@@ -41,7 +41,25 @@
                 </div>
               </article>
               <!-- save button -->
-              <button type="button" id="save{{r.id}}" class="btn btn-outline-info btn-sm save-recipe">SAVE</button>
+              <!-- if user is logged in -->
+              {% if not current_user.is_anonymous %}
+              <div class="save-btn">
+                {% if current_user.is_following(r) %}
+                <button type="button" class="btn btn-outline-info btn-sm save-recipe">
+                <a href="#" id={{r.id}} class="unsaves">Unsave</a>
+                </button>
+                {% else %}
+                <button type="button" class="btn btn-outline-info btn-sm save-recipe">
+                <a href="#" id={{r.id}} class="saves">Save</a>
+                </button>
+                {% endif %}
+              </div>
+              <!-- send user back to saved recipes to go back to login -->
+              {% else %}
+              <button type="button" class="btn btn-outline-info btn-sm save-recipe">
+              <a href="{{ url_for('savedRecipes') }}">Save</a>
+              </button>
+              {% endif %}
             </div>
             </div>
           </div>
