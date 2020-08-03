@@ -42,9 +42,13 @@ for food in recipes:
 
         # scrape image url
         img = content.find('img', attrs={"class": "ba-picture--fit"}).get("srcset")
+        # convert to render-able image url
+        img_url = img.split(' ')[0]
 
         # scrape servings
         servings = content.find('span', attrs={"class": "recipe__header__servings"}).text
+        if servings == '':
+            servings = 'No servings data'
 
         # scrape ingredients list
         # (no separation for quantity and measurement for ingredients on this
@@ -69,12 +73,12 @@ for food in recipes:
             "ingredients": ingredList,
             "instructions": instructions,
             "link": url,
-            "image": img
+            "image": img_url
         }
 
         # save all json objects
         allRecipes.append(recipeObject)
 
 # save data in json file
-with open('data/BAData.json', 'w', encoding='utf-8') as outfile:
+with open('BAData.json', 'w', encoding='utf-8') as outfile:
     json.dump(allRecipes, outfile, ensure_ascii=False, indent=4) # formats nicely

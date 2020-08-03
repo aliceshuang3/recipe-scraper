@@ -55,8 +55,7 @@ for food in recipes:
             try:
                 servings = content.find('span', attrs={"class": "wprm-recipe-servings-with-unit"}).text + "servings"
             except:
-                servings = "NA"
-                print("No servings data found")
+                servings = "No servings data"
 
             # scrape ingredients list
             ingredList = []
@@ -85,8 +84,10 @@ for food in recipes:
                 "image": img
             }
 
-            allRecipes.append(recipeObject)
+            # ensure no duplicates
+            if recipeObject not in allRecipes:
+                allRecipes.append(recipeObject)
 
 # save data in json file after all recipes scraped
-with open('data/MBData.json', 'w', encoding='utf-8') as outfile:
+with open('MBData.json', 'w', encoding='utf-8') as outfile:
     json.dump(allRecipes, outfile, ensure_ascii=False, indent=4)
