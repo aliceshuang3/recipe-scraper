@@ -102,6 +102,7 @@ def savedRecipes():
     # user is logged in, then render their saved recipes
     if current_user.is_authenticated:
         recipes = current_user.followed_recipes(current_user)
+        print(recipes)
         return render_template('savedRecipes.html', user=current_user, recipes=recipes)
     flash("Login or Sign Up to start saving recipes", "info")
     # user isn't logged in yet, render login page

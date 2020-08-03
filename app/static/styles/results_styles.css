@@ -20,7 +20,7 @@
   background: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   position: absolute;
-  top: 50%;
+  top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -130,6 +130,8 @@ article p a {
 }
 
 h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
   color: #fdfcfc;
   font-size: 40px;
   font-weight: 600;
@@ -345,7 +347,7 @@ nav a {
   height: 100%;
   position: absolute;
   left: 50%;
-  top: 47%;
+  top: 40%;
   transform: translate(-50%, -50%);
   text-align: center;
   width: 102%;
@@ -353,4 +355,14 @@ nav a {
 
 .results-page {
   margin-top: 200px;
+}
+
+.background-img {
+  height: 100%;
+  background-image: cover;
+  margin: 0;
+  background-size: cover;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -40%);
 }
