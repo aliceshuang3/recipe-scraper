@@ -8,42 +8,62 @@
 
 <div class="container-fluid h-100 d-flex flex-row random-page">
   <div class="random-page h-100 basepage">
-    <!-- left half  -->
-    <div class="col random-img h-100">
-      <button type=submit class="btn btn-outline-primary btn-sm round" id="back-btn"><a style="color:#fdfcfc;" href="{{ url_for('searchRecipes') }}">Back to Search</a></button>
-      <!-- MAKE IMG CLICKABLE TO RECIPE  -->
-      <a href="{{ recipe.recipe_link }}" target="_blank">
-        <img src="{{ recipe.image_link }}" id="recipe-img" width="350" alt="{{ recipe.recipe_name }}">
-      </a>
-      <!-- if user is logged in -->
-      {% if not current_user.is_anonymous %}
-      <div class="save-btn">
-        {% if current_user.is_following(recipe) %}
-        <a href="#" class="unsaves" id={{recipe.id}}>Unsave</a>
+    <button type=submit class="btn btn-outline-primary btn-sm round" id="back-btn"><a style="color:#fdfcfc;" href="{{ url_for('searchRecipes') }}">Back to Search</a></button>
+    <div id="card-container">
+       <div id="recipe-image">
+         <h4>Random Recipe Generator</h4>
+         <a href="{{ recipe.recipe_link }}" target="_blank">
+           <img src="{{ recipe.image_link }}" id="recipe-img" width="350" alt="{{ recipe.recipe_name }}">
+        </a>
+      </div>
+
+      <button type="button" id="scroll-down" class="btn btn-outline-light btn-sm" onClick="document.getElementById('card-title').scrollIntoView({behavior: 'smooth'});">
+        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+      </button>
+
+      <div id="card-title">{{ recipe.recipe_name }}
+        <br>
+      <!-- save button  -->
+        {% if not current_user.is_anonymous %}
+        <div class="save-btn">
+          {% if current_user.is_following(recipe) %}
+          <button type="button" class="btn btn-sm save-recipe-random">
+          <a href="#" id=save{{recipe.id}} class="unsaves">Unsave</a>
+          </button>
+          {% else %}
+          <button type="button" class="btn btn-sm save-recipe-random">
+          <a href="#" id=save{{recipe.id}} class="saves">Save</a>
+          </button>
+          {% endif %}
+        </div>
+        <!-- send user back to saved recipes to go back to login -->
         {% else %}
-        <a href="#" class="saves" id={{recipe.id}}>Save</a>
+        <button type="button" class="btn btn-sm save-recipe-random">
+        <a class="notLoggedSave" href="{{ url_for('savedRecipes') }}">Save</a>
+        </button>
         {% endif %}
       </div>
-      <!-- send user back to saved recipes to go back to login -->
-      {% else %}
-      <a href="{{ url_for('savedRecipes') }}">Save</a>
-      {% endif %}
-    </div>
-    <!-- right half  -->
-    <div class="col random-text h-100">
-      <h1>
-          Recipe of the Day:
-      </h1>
-      <p>{{ recipe.recipe_name }}</p>
-      <p>{{ recipe.servings }}</p>
-      <p><a href="{{ recipe.recipe_link }}" target="_blank">Click here to see the full recipe</a></p>
-      <p>
-        {% for i in ingreds %}
-        <li class="random-ingredient">{{ i.ingredient_name }}</li>
-        {% endfor %}
-      </p>
-    </div>
 
+      <div id="details">
+        Servings: <span class="detail-value">{{ recipe.servings }}</span> | <a href="{{ recipe.recipe_link }}" target="_blank">Click here to see the full recipe</a>
+      </div>
+
+      <div id="card-items">
+        <span class="card-item-title">Ingredients</span>
+        <ul class="checkmark">
+          {% for i in ingreds %}
+          <li>{{ i.ingredient_name }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div id="method">
+        <span class="card-item-title">Instructions</span>
+        <ol>
+          {{ recipe.instructions }}
+        </ol>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

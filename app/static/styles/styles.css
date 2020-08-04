@@ -394,12 +394,6 @@ form label {
   box-shadow:0 0 0 .2rem rgba(128, 0, 0, 0.5);
 }
 
-#back-btn {
-  margin-bottom: 70%;
-  margin-left: 5rem;
-  width: 8rem;
-}
-
 /* search page styles ********************************************/
 .search-page {
   background-size: cover;
@@ -563,7 +557,7 @@ form label {
   background-color: #f07167;
   background-size: cover;
   display: grid;
-  overflow: hidden;
+  overflow: auto;
   height: 100%;
   position: absolute;
   left: 50%;
@@ -593,14 +587,142 @@ form label {
 }
 
 .random-page a {
-  color: #00afb9;
+  color: #f07167;
 }
 
 .random-page a:hover {
-  color: #0081a7;
+  color: #455560;
 }
 
 .random-ingredient {
   text-align: left;
   margin-left: 25%;
+}
+
+
+/* from recipe card example **************/
+#card-container {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+#card-title {
+  font-weight: 700;
+  font-size: 25px;
+  background: #455560;
+  padding: 15px 20px;
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 5rem;
+}
+
+#details {
+  background: #fff;
+  border-left: solid 1px #ededed;
+  border-right: solid 1px #ededed;
+  font-size: 16px;
+  padding: 15px 20px;
+}
+
+.detail-value {
+  color: #455560;
+}
+
+#card-items {
+  background: #ededed;
+  padding: 20px;
+  text-align: left;
+}
+
+.card-item-title {
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 5rem;
+}
+
+ul.checkmark li:before {
+    color: #f07167;
+    content:"\2713\0020";
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.checkmark li {
+  list-style-type: none;
+  text-align: left;
+}
+
+li {
+  margin-bottom: 3px;
+}
+
+#method {
+  background: #fff;
+  padding: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#method {
+  list-style-position: inside;
+  margin-bottom: 10px;
+  list-style-type: none;
+  text-align: left;
+}
+
+#recipe-image img {
+  border-radius: 10px;
+}
+
+ol {
+  counter-reset: item;
+}
+
+ol > li {
+  counter-increment: item;
+}
+
+ol > li::before {
+  font-weight: bold;
+  content: counter(item) ".";
+  margin-right: 8px;
+}
+
+.save-recipe-random {
+  margin-top: 1rem;
+  width: 10rem;
+  border: 1px solid #f07167;
+}
+
+.save-recipe-random:hover {
+  background-color: #f07167;
+  color: #455560;
+}
+
+#back-btn {
+  margin-left: 5rem;
+  width: 8rem;
+  margin-top: -1rem;
+  height: 2rem;
+}
+
+h4 {
+  color: white;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+button#scroll-down {
+  margin-top: 2rem;
+  width: 3rem;
+  font-size: 1.9rem;
+  border-radius: 50%;
+}
+
+button#scroll-down:hover {
+  color: #f07167;
 }

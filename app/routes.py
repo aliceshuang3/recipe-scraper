@@ -143,8 +143,10 @@ def recipeResults():
 
 @app.route("/random")
 def randomRecipe():
+    # get total number of recipes in DB
+    total = len(Recipe.query.all())
     # generate random Recipe number
-    recipe_num = random.randint(1, 2055)
+    recipe_num = random.randint(1, total)
     # query recipe from database, save all details
     recipe = Recipe.query.filter_by(id=recipe_num).first()
 
