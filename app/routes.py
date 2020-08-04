@@ -118,7 +118,7 @@ def recipeResults():
      if len(all_matches) > 0:
          recipes = []
          ingredients = []
-         
+
          for i in range(len(all_matches)):
              # get corresponding recipe for each ingredient by matching up the recipe id
              r = Recipe.query.filter_by(id=all_matches[i].recipe_id).first()
@@ -135,7 +135,11 @@ def recipeResults():
          # form key-value pairs to loop through simultaneously in html
          toReturn = zip(recipes, ingredients)
 
-     return render_template('recipeResults.html', toReturn=toReturn, keyword_search=keyword_search)
+         return render_template('recipeResults.html', toReturn=toReturn, keyword_search=keyword_search)
+     else:
+         # no recipes found
+         return render_template('no_recipes_error.html')
+
 
 @app.route("/random")
 def randomRecipe():
@@ -200,7 +204,7 @@ def saves():
                 user.unsaveRecipe(recipe)
                 db.session.commit()
                 return jsonify({'status':'OK', 'id':recipeID, 'action':action})
-                
+
 """
 @app.cli.command("initdb")
 def reset_db():

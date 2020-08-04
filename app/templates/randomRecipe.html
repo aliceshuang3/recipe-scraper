@@ -10,6 +10,7 @@
   <div class="random-page h-100 basepage">
     <!-- left half  -->
     <div class="col random-img h-100">
+      <button type=submit class="btn btn-outline-primary btn-sm round" id="back-btn"><a style="color:#fdfcfc;" href="{{ url_for('searchRecipes') }}">Back to Search</a></button>
       <!-- MAKE IMG CLICKABLE TO RECIPE  -->
       <a href="{{ recipe.recipe_link }}" target="_blank">
         <img src="{{ recipe.image_link }}" id="recipe-img" width="350" alt="{{ recipe.recipe_name }}">

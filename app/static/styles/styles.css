@@ -28,19 +28,41 @@
   padding: 30px 60px;
 }
 
+.home {
+  width: 58%;
+  float: left;
+  margin-left: 6%;
+  margin-top: 17%;
+  text-align: left;
+  overflow: scroll;
+}
+
 .home p, .about p {
   color: #fdfcfc;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
 }
 
 .about h2 {
   font-weight: 700;
 }
 
-.home h1 {
-  font-size: 40px;
+.home h1, span.underline-text {
+  font-size: 34px;
   font-weight: 700;
 }
+
+.home p {
+  width: 70%;
+  line-height: 1.5rem;
+  margin-top: 1rem;
+}
+
+span.underline-text {
+  background-color: rgb(240, 113, 103);
+  padding-right: 0.5rem;
+  padding-left: 0.3rem;
+}
+
 /* overlay background for header */
 /* nav bar color  */
 :root {
@@ -318,7 +340,7 @@ form label {
     content: "";
     display: block;
     height: 5px;
-    background: #333;
+    background: #fdfcfc;
     position: absolute;
     top: -.75em;
     left: 0;
@@ -333,7 +355,7 @@ form label {
 }
 
 /* Home "get started" button */
-.btn-lg.round {
+.btn-lg.round, .btn-sm.round {
 	border-radius: 24px;
 }
 .btn-outline-primary{
@@ -370,6 +392,12 @@ form label {
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus{
   box-shadow:0 0 0 .2rem rgba(128, 0, 0, 0.5);
+}
+
+#back-btn {
+  margin-bottom: 70%;
+  margin-left: 5rem;
+  width: 8rem;
 }
 
 /* search page styles ********************************************/

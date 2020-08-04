@@ -80,6 +80,17 @@ article {
 
 article p {
   font-size: 0.8rem;
+  color: #fdfcfc;
+}
+
+.card-top {
+  background-color: #0081a7;
+  border-radius: 10px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.03rem;
+  width: 78%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 .containerClass.closed article {
@@ -93,17 +104,24 @@ article p {
   margin-bottom: 20px;
   padding-left: 4px;
   font-size: 0.8rem;
+  text-align: left;
+  list-style-type: none;
 }
 
-.recipe-card-ingredients > li {
-  list-style-type: none;
+.recipe-card-ingredients > ul {
   display: flex;
   margin: 4px 0px;
 }
 
-.recipe-card-ingredients > li > .amount {
+.recipe-card-ingredients > ul > .amount {
   width: 80px;
   color: #1976D2;
+}
+
+span.dash {
+  color: #0081a7;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .preperation > div {
@@ -116,25 +134,37 @@ div.card-column {
 }
 
 p.card-label {
-  color: #f07167;
+  color: #0081a7;
   font-weight: bold;
   font-size: 0.8rem;
+  text-align: left;
 }
 
 div.instructions {
   font-size: 0.8rem;
+  text-align: left;
 }
 
 article p a {
-  color: #00afb9;
+  color: #fdfcfc;
+}
+
+article p a:hover {
+  color: #333;
 }
 
 h2 {
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 5rem;
   color: #fdfcfc;
-  font-size: 40px;
+  font-size: 38px;
   font-weight: 600;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: -0.5rem;
+}
+
+.back-btn {
+  padding: 2rem;
 }
 
 .save-recipe {
@@ -325,7 +355,7 @@ nav a {
     content: "";
     display: block;
     height: 5px;
-    background: #333;
+    background: #fdfcfc;
     position: absolute;
     top: -.75em;
     left: 0;
@@ -337,6 +367,12 @@ nav a {
   nav a:hover::before {
     transform: scale(1, 1);
   }
+}
+
+/* Go back button ********************************************/
+.btn-sm.round {
+	border-radius: 24px;
+  float: left;
 }
 
 /* search results page styles ********************************************/

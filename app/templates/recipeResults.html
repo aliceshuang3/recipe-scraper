@@ -10,7 +10,10 @@
 {% block body %}
 <div class="background-img container-fluid h-100 d-flex flex-row search-results-page">
   <div class="search-results-page h-100 basepage">
-    <h2>Search Results for: {{ keyword_search }}</h2>
+    <div class="back-btn">
+        <button type=submit class="btn btn-outline-primary btn-sm round"><a style="color:#fdfcfc;" href="{{ url_for('searchRecipes') }}">Back to Search</a></button>
+        <h2>Search Results for: {{ keyword_search }}</h2>
+    </div>
       <!-- create a card for each recipe  -->
       <div class="card-deck text-center">
         {% for r, i in toReturn %}
@@ -22,14 +25,16 @@
                 <div class="recipe-card-title">{{ r.recipe_name }}</div>
               </div>
               <article>
-                <p>{{ r.servings }}</p>
-                <p><a href="{{ r.recipe_link }}" target="_blank">Click here to see the full recipe</a></p>
+                <div class="card-top">
+                  <p>{{ r.servings }} <br>
+                  <a href="{{ r.recipe_link }}" target="_blank">Click here to see the full recipe</a></p>
+                </div>
                 <ul class="recipe-card-ingredients">
                   <p class="card-label">Ingredients:</p>
                   <!-- loop through list of ingredients corresponding to a recipe  -->
                   {% for ingredient in i %}
                     <li>
-                      <div class="recipe-card-ingredient">{{ ingredient.ingredient_name }}</div>
+                      <div class="recipe-card-ingredient"><span class="dash">- </span>{{ ingredient.ingredient_name }}</div>
                     </li>
                   {% endfor %}
                 </ul>

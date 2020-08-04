@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% set active_page = "no_recipes" %}
+
+{% block heading %}
+
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid h-100 d-flex flex-row background-img">
+    <div class="basepage">
+        <h2>Sorry, please try again.</h2>
+        <h6>No recipes were found matching your search.</h6>
+        <br>
+        <div class="txtb">
+            <button type=submit class="btn btn-outline-primary btn-lg round"><a style="color:#fdfcfc;" href="{{ url_for('searchRecipes') }}">Search Again</a></button>
+        </div>
+    </div>
+</div>
+{% endblock %}
