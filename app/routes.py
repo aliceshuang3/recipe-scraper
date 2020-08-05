@@ -101,9 +101,26 @@ def searchRecipes():
 def savedRecipes():
     # user is logged in, then render their saved recipes
     if current_user.is_authenticated:
-        recipes = current_user.followed_recipes(current_user)
-        print(recipes)
-        return render_template('savedRecipes.html', user=current_user, recipes=recipes)
+        following = current_user.followed_recipes(current_user)
+        if len(following) > 0:
+            saved = True
+            ingredients = []
+
+            for r in following:
+                # query for all corresponding ingredients
+                ingreds = Ingredient.query.filter_by(recipe_id=r.id).all()
+
+                # add list of ingredients to list of all lists
+                if ingreds not in ingredients:
+                    ingredients.append(ingreds)
+
+            # form key-value pairs to loop through simultaneously in html
+            toReturn = zip(following, ingredients)
+            return render_template('savedRecipes.html', user=current_user, toReturn=toReturn, saved=saved)
+        else:
+            saved = False
+            return render_template('savedRecipes.html', saved=saved)
+            
     flash("Login or Sign Up to start saving recipes", "info")
     # user isn't logged in yet, render login page
     return redirect(url_for('login'))
