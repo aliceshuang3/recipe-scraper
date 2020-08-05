@@ -7,27 +7,46 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid h-100 d-flex flex-row background-img">
+<div class="container-fluid h-100 d-flex flex-row background-img about-page">
     <div class="about basepage">
-        <h2>
-            About Us
-        </h2>
-        <br>
-        <p>
-            Hi there, we are Jacquelyn Chow and Alice Huang!<br>
-            We're also Swarthmore College students who are beginner cooks and always have a hard time coming up with what to cook.
-            <br><br>
-            We hope that with our site in your arsenal, deciding on what to make and how to use up old ingredients is much easier.
-        </p>
-        <br><br>
-        <p>
-            Let us know how we can make our site better by telling us more features or sites you want to see on our database.
-        </p>
-        <a href="{{url_for('feedback')}}">
-            <button type="button" class="btn btn-outline-primary btn-lg round">
-              Give Feedback
-            </button>
+        <div class="about-bio">
+          <h2>
+              About Us
+          </h2>
+          <br>
+          <p>
+              Hi there, we're Jacquelyn Chow and Alice Huang!
+              <br><br>
+              We're Swarthmore College students studying Computer Science, and we created Novice Chef for fun during the summer
+              of 2020. We were inspired to create this app because we're also beginner cooks and always have a hard time coming
+              up with what to cook or how to use up ingredients our families already have at home.
+              <br><br>
+              We hope that with our site in your arsenal, deciding on what to make and how to use up old ingredients is much easier.
+              Click on the Search tab to get started with your search for specific ingredients you want to use up or try out our random
+              recipe generator if you want to cook something new. You can also save recipes to come back to later if you create an account!
+          </p>
+          <br><br>
+        </div>
+        <div id="site-feedback">
+          <p>
+              We'd love to know how we can make our site better, so please let us know about more features or recipe sites you want to see in our database!
+          </p>
+          <a href="{{url_for('feedback')}}">
+              <button type="button" class="btn btn-outline-primary btn-sm round site-feedback-btn">
+                Give Feedback
+              </button>
           </a>
+        </div>
+        <div id="jackie-photo">
+          <a href="#" target="_blank">
+            <img src="{{ url_for('static', filename='headshot-jackie.jpg') }}" id="jackie-img" alt="Jackie Profile">
+          </a>
+        </div>
+        <div id="alice-photo">
+          <a href="https://www.linkedin.com/in/alice-s-huang/" target="_blank">
+            <img src="{{ url_for('static', filename='headshot-alice.jpg') }}" id="alice-img" alt="Alice Profile">
+          </a>
+        </div>
     </div>
 </div>
 {% endblock %}
