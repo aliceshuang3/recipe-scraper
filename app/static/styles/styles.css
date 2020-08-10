@@ -152,16 +152,13 @@ span.underline-text {
   color: #f07167;
 }
 
-<<<<<<< HEAD
-#alice-img, #jackie-img {
+#alice-img, #jacquelyn-img {
   width: 22%;
   border-radius: 50%;
   border: 3px solid #fdfcfc;
   margin-bottom: 8rem;
 }
 
-#alice-img {
-=======
 #jacquelyn-photo, #alice-photo {
   width: 30%;
   padding-bottom: 10rem;
@@ -185,27 +182,16 @@ span.underline-text {
 }
 
 #jacquelyn-img {
->>>>>>> 5ad71c5... fixed save btn not hiding, responsive results page, changed some buttons, about pfp opacities and hover, etc
   float: right;
   margin-right: 15%;
 }
 
-<<<<<<< HEAD
-#jackie-img {
-  float: left;
-  margin-left: 15%;
-}
-
-#alice-img:hover, #jackie-img:hover {
-  opacity: 0.75;
-=======
 #alice-img:hover {
   opacity: 1; 
 }
 
 #jacquelyn-img:hover {
   opacity: 1;
->>>>>>> 5ad71c5... fixed save btn not hiding, responsive results page, changed some buttons, about pfp opacities and hover, etc
 }
 
 /* resize elements when screen gets small */
@@ -583,11 +569,26 @@ form label {
   min-width: 100%;
   margin: auto;
 }
-
+.username {
+  display: flex;
+  text-align: center;
+}
 .username h4 {
   margin-top: 150px;
   margin-right: 35px;
   color: #fdfcfc;
+}
+.left-logged h4, .right-logged h4 {
+  font-weight: 600;
+}
+.left-logged, .right-logged {
+  flex: 1;
+}
+.left-logged {
+  margin-left: -20px;
+}
+.right-logged {
+  margin-right: -40px;
 }
 /* left  */
 .search {
@@ -893,21 +894,25 @@ ol > li::before {
 
 .save-recipe-random {
   margin-top: 1rem;
-  width: 10rem;
+  width: 8rem;
   border: 1px solid white;
-  background-color: white;
+  background-color: transparent;
 }
-
-.save-recipe-random:hover {
-  background-color: #f07167;
-  border: 1px solid white;
+a.saves, a.unsaves {
   color: white;
+  font-weight: 600;
+}
+a.unsaves {
+  margin-right: 0px;
+}
+a.saves:hover, a.unsaves:hover {
+  color: #f07167;
 }
 
 #back-btn {
   margin-left: 5rem;
   width: 8rem;
-  margin-top: -1rem;
+  margin-top: 3rem;
   height: 2rem;
 }
 
@@ -941,3 +946,43 @@ button#scroll-down:hover {
     font-size: 1.3rem;
   }
 }
+
+
+/* go to the top button */
+#TopButton {
+  display: inline-block;
+  background-color: #FF9800;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+  opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#TopButton::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#TopButton:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#TopButton:active {
+  background-color: #555;
+}
+#TopButton.show {
+  opacity: 1;
+  visibility: visible;
+}
+

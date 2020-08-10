@@ -19,91 +19,57 @@
         {% for r, i in toReturn %}
           <div class="card-column col-sm-6 col-md-4 col-lg-3">
             <div id="body">
-            <div class="closed containerClass" id="container{{r.id}}">
-              <div class="allIds" id="toggle{{r.id}}" onclick="startToggle({{r.id}})">
-                <div class="recipe-card-header" style="background-image: url({{ r.image_link }})"></div>
-                <div class="recipe-card-title">{{ r.recipe_name }}</div>
-              </div>
-              <article>
-                <div class="card-top">
-                  <p>{{ r.servings }} <br>
-                  <a href="{{ r.recipe_link }}" target="_blank">Click here to see the full recipe</a></p>
+              <div class="closed containerClass" id="container{{r.id}}">
+                <div class="allIds" id="toggle{{r.id}}" onclick="startToggle({{r.id}})">
+                  <div class="recipe-card-header" style="background-image: url({{ r.image_link }})"></div>
+                  <div class="recipe-card-title">{{ r.recipe_name }}</div>
                 </div>
-                <ul class="recipe-card-ingredients">
-                  <p class="card-label">Ingredients:</p>
-                  <!-- loop through list of ingredients corresponding to a recipe  -->
-                  {% for ingredient in i %}
-                    <li>
-                      <div class="recipe-card-ingredient"><span class="dash">- </span>{{ ingredient.ingredient_name }}</div>
-                    </li>
-                  {% endfor %}
-                </ul>
-                <div class="preperation">
-                  <p class="card-label">Instructions:</p>
-                  <div class="instructions">
-                  {{ r.instructions }}
+                <article>
+                  <div class="card-top">
+                    <p>{{ r.servings }} <br>
+                    <a href="{{ r.recipe_link }}" target="_blank">Click here to see the full recipe</a></p>
                   </div>
+                  <ul class="recipe-card-ingredients">
+                    <p class="card-label">Ingredients:</p>
+                    <!-- loop through list of ingredients corresponding to a recipe  -->
+                    {% for ingredient in i %}
+                      <li>
+                        <div class="recipe-card-ingredient"><span class="dash">- </span>{{ ingredient.ingredient_name }}</div>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  <div class="preperation">
+                    <p class="card-label">Instructions:</p>
+                    <div class="instructions">
+                    {{ r.instructions }}
+                    </div>
+                  </div>
+                </article>
+                <!-- save button -->
+                <!-- if user is logged in -->
+                {% if not current_user.is_anonymous %}
+                <div class="save-btn">
+                  {% if current_user.is_following(r) %}
+                  <button type="button" id=btnsave{{r.id}} class="btn btn-outline-info btn-sm save-recipe">
+                  <a href="#" id=save{{r.id}} class="unsaves">Unsave</a>
+                  </button>
+                  {% else %}
+                  <button type="button" id=btnsave{{r.id}} class="btn btn-outline-info btn-sm save-recipe">
+                  <a href="#" id=save{{r.id}} class="saves">Save</a>
+                  </button>
+                  {% endif %}
                 </div>
-              </article>
-              <!-- save button -->
-              <!-- if user is logged in -->
-              {% if not current_user.is_anonymous %}
-              <div class="save-btn">
-                {% if current_user.is_following(r) %}
-                <button type="button" id=btnsave{{r.id}} class="btn btn-outline-info btn-sm save-recipe">
-                <a href="#" id=save{{r.id}} class="unsaves">Unsave</a>
-                </button>
+                <!-- send user back to saved recipes to go back to login -->
                 {% else %}
-                <button type="button" id=btnsave{{r.id}} class="btn btn-outline-info btn-sm save-recipe">
-                <a href="#" id=save{{r.id}} class="saves">Save</a>
+                <button type="button" class="btn btn-outline-info btn-sm save-recipe">
+                <a class="notLoggedSave" href="{{ url_for('savedRecipes') }}">Save</a>
                 </button>
                 {% endif %}
               </div>
-              <!-- send user back to saved recipes to go back to login -->
-              {% else %}
-              <button type="button" class="btn btn-outline-info btn-sm save-recipe">
-              <a class="notLoggedSave" href="{{ url_for('savedRecipes') }}">Save</a>
-              </button>
-              {% endif %}
-            </div>
             </div>
           </div>
-        {% endfor %}
+          {% endfor %}
       </div>
   </div>
 </div>
-
-<!-- javascript for popping open recipe cards on click  -->
-<script>
-  function byID(id) {
-    return document.getElementById(id);
-  }
-
-  function startToggle(n) {
-    // get the specific id of the container
-    containerId = "container" + n.toString();
-    saveLinkId = "save" + n.toString();
-    saveBtnId = "btnsave" + n.toString();
-
-    // hide save button and link when user clicks open recipe pop-up
-    const a = byID(saveLinkId);
-    const btn = byID(saveBtnId);
-
-    if (a.style.display === "none") {
-      a.style.display = "block";
-      btn.style.display = "block";
-    } else {
-      a.style.display = "none";
-      btn.style.display = "none";
-    }
-
-    // add or remove the "closed" class to toggle opening/closing
-    if (byID(containerId).classList.contains("closed")) {
-      byID(containerId).classList.remove("closed");
-    } else {
-      byID(containerId).classList.add("closed");
-    }
-
-  }
-</script>
 {% endblock %}

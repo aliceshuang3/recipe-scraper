@@ -44,7 +44,12 @@
     <!-- </div> -->
     <div class="col h-50 username">
       {% if not current_user.is_anonymous %}
-      <h4>Logged in as: &ensp;<strong>&ensp;{{ current_user.username }}</strong></h4>
+      <div class="left-logged">
+        <h4>Logged in as:</h4>
+      </div>
+      <div class="right-logged">
+        <h4>{{ current_user.username }}</h4>
+      </div>
       {% endif %}
     </div>
 </div>

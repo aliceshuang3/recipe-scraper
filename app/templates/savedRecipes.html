@@ -11,8 +11,8 @@
 <div class="background-img container-fluid h-100 d-flex flex-row search-results-page">
   <div class="search-results-page h-100 basepage">
     <div class="back-btn">
-        <button type=submit class="btn btn-outline-primary btn-sm round"><a style="color:#fdfcfc;" href="{{ url_for('searchRecipes') }}">Back to Search</a></button>
-        <h2>Saved Recipes</h2>
+      <a href="{{ url_for('searchRecipes') }}"><button type=submit id="back-search-button" class="btn btn-outline-light btn-sm round back-search-button">Back to Search</button></a>
+      <h2>Saved Recipes</h2>
     </div>
       {% if saved %}
       <!-- create a card for each recipe  -->
@@ -51,11 +51,11 @@
               {% if not current_user.is_anonymous %}
               <div class="save-btn">
                 {% if current_user.is_following(r) %}
-                <button type="button" class="btn btn-outline-info btn-sm save-recipe">
+                <button type="button" id=save{{r.id}} class="btn btn-outline-info btn-sm save-recipe">
                 <a href="#" id=save{{r.id}} class="unsaves">Unsave</a>
                 </button>
                 {% else %}
-                <button type="button" class="btn btn-outline-info btn-sm save-recipe">
+                <button type="button" id=save{{r.id}} class="btn btn-outline-info btn-sm save-recipe">
                 <a href="#" id=save{{r.id}} class="saves">Save</a>
                 </button>
                 {% endif %}

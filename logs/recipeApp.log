@@ -1,15 +1,28 @@
-2020-08-10 01:30:52,579 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:32:12,041 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:32:20,873 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:32:33,240 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:32:55,940 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:33:05,234 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:33:33,324 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:33:44,160 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:33:56,119 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:35:28,619 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:43:13,652 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:43:23,585 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:43:35,703 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:43:50,044 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
-2020-08-10 01:56:34,747 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:26:34,156 ERROR: Exception on /saves [POST] [in /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-08-10 16:28:02,652 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:32:12,107 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:35:31,980 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:35:40,415 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:35:56,722 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:45:08,688 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:45:33,775 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:46:50,794 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:50:51,079 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:52:48,582 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:54:57,354 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:55:47,571 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 16:57:10,377 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 17:00:19,477 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 17:03:42,996 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 17:06:03,571 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-10 17:17:43,255 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
