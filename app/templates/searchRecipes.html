@@ -20,8 +20,8 @@
           <div class="d-flex">
             <input type="text" name="keyword" id="recipe-search" class="form-control" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
             <a href="{{url_for('recipeResults')}}">
-              <button type="submit" id="recipe-search-button" class="btn btn-outline-light" >
-                <i class="fa fa-search" style="color:#f07167;" aria-hidden="true"></i>
+              <button type="submit" id="recipe-search-button" class="btn btn-outline-light">
+                <i class="fa fa-search" aria-hidden="true"></i>
               </button>
             </a>
           </div>
@@ -36,7 +36,7 @@
             <h3>Feeling adventurous?</h3>
           </div>
           <a href="{{url_for('randomRecipe')}}">
-            <button type="button" id="random-recipe" class="btn btn-outline-light">Find me a recipe!</button>
+            <button type="button" id="random-recipe-button" class="btn btn-outline-light" style="font-weight: 600;">Find me a recipe!</button>
           </a>
         </div>
       </form>

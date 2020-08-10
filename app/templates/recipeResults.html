@@ -11,13 +11,13 @@
 <div class="background-img container-fluid h-100 d-flex flex-row search-results-page">
   <div class="search-results-page h-100 basepage">
     <div class="back-btn">
-        <button type=submit class="btn btn-outline-primary btn-sm round"><a style="color:#fdfcfc;" href="{{ url_for('searchRecipes') }}">Back to Search</a></button>
+        <a href="{{ url_for('searchRecipes') }}"><button type=submit id="back-search-button" class="btn btn-outline-light btn-sm round back-search-button">Back to Search</button></a>
         <h2>Search Results for: {{ keyword_search }}</h2>
     </div>
       <!-- create a card for each recipe  -->
       <div class="card-deck text-center">
         {% for r, i in toReturn %}
-          <div class="card-column col-sm-6 col-md-3 col-lg-3">
+          <div class="card-column col-sm-6 col-md-4 col-lg-3">
             <div id="body">
             <div class="closed containerClass" id="container{{r.id}}">
               <div class="allIds" id="toggle{{r.id}}" onclick="startToggle({{r.id}})">
@@ -50,11 +50,11 @@
               {% if not current_user.is_anonymous %}
               <div class="save-btn">
                 {% if current_user.is_following(r) %}
-                <button type="button" class="btn btn-outline-info btn-sm save-recipe">
+                <button type="button" id=btnsave{{r.id}} class="btn btn-outline-info btn-sm save-recipe">
                 <a href="#" id=save{{r.id}} class="unsaves">Unsave</a>
                 </button>
                 {% else %}
-                <button type="button" class="btn btn-outline-info btn-sm save-recipe">
+                <button type="button" id=btnsave{{r.id}} class="btn btn-outline-info btn-sm save-recipe">
                 <a href="#" id=save{{r.id}} class="saves">Save</a>
                 </button>
                 {% endif %}
@@ -82,13 +82,18 @@
   function startToggle(n) {
     // get the specific id of the container
     containerId = "container" + n.toString();
-    saveBtnId = "save" + n.toString();
+    saveLinkId = "save" + n.toString();
+    saveBtnId = "btnsave" + n.toString();
 
-    // hide save button when user clicks open recipe pop-up
+    // hide save button and link when user clicks open recipe pop-up
+    const a = byID(saveLinkId);
     const btn = byID(saveBtnId);
-    if (btn.style.display === "none") {
+
+    if (a.style.display === "none") {
+      a.style.display = "block";
       btn.style.display = "block";
     } else {
+      a.style.display = "none";
       btn.style.display = "none";
     }
 

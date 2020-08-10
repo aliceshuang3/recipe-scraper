@@ -32,12 +32,21 @@
               We'd love to know how we can make our site better, so please let us know about more features or recipe sites you want to see in our database!
           </p>
           <a href="{{url_for('feedback')}}">
-              <button type="button" class="btn btn-outline-primary btn-sm round site-feedback-btn">
+              <button type="button" class="btn btn-outline-light btn-sm round site-feedback-btn">
                 Give Feedback
               </button>
           </a>
         </div>
+<<<<<<< HEAD
         <div id="about-photos">
+=======
+        <div id="jacquelyn-photo">
+          <a href="https://www.linkedin.com/in/jacquelyn-chow-078424173/" target="_blank">
+            <img src="{{ url_for('static', filename='headshot-jacquelyn.jpg') }}" id="jacquelyn-img" alt="Jacquelyn Profile">
+          </a>
+        </div>
+        <div id="alice-photo">
+>>>>>>> 5ad71c5... fixed save btn not hiding, responsive results page, changed some buttons, about pfp opacities and hover, etc
           <a href="https://www.linkedin.com/in/alice-s-huang/" target="_blank">
             <img src="{{ url_for('static', filename='headshot-alice.jpg') }}" id="alice-img" alt="Alice Profile">
           </a>

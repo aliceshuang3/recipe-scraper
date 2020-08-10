@@ -21,22 +21,19 @@
   font-weight: 400;
 }
 
-.basepage {
-  display: block;
-  margin: 0 auto;
-  margin-top: 140px;
-  padding: 30px 60px;
-}
-
 .home {
-  width: 58%;
+  display: block;
+  width: 100%;
   float: left;
+  padding: 30px 60px;
   margin-left: 6%;
   margin-top: 17%;
   text-align: left;
   overflow: scroll;
 }
-
+.about {
+  margin-top: 12%;
+}
 .home p, .about p {
   color: #fdfcfc;
   font-size: 0.95rem;
@@ -54,15 +51,68 @@
 .home p {
   width: 70%;
   line-height: 1.5rem;
-  margin-top: 1rem;
+  margin-top: 1.8rem;
 }
 
 span.underline-text {
   background-color: rgb(240, 113, 103);
   padding-right: 0.5rem;
   padding-left: 0.3rem;
+  box-shadow: 5px 5px rgba(240, 113, 103, 0.4);
 }
-
+@media screen and (max-width: 900px) {
+  .about {
+    margin-top: 20%;
+  }
+  /* search results for header */
+  .back-btn h2{
+    margin: 0 auto;
+    margin-top: 80px;
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .home h1, h1 span.underline-text {
+    font-size: 24px;
+  }
+  .home p {
+    font-size: 0.8rem;
+    float: unset;
+  }
+  .home {
+    margin-top: 30%;
+  }
+  h1.logo {
+    font-size: 25px;
+    margin-top: 13px;
+    margin-left: 33px;
+  }
+  .logo img.novice-chef-logo {
+    height: 55px;
+  }
+  .home {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .about {
+    margin-top: 30%;
+    margin-left: -20px;
+    margin-right: -60px;
+    font-size: 30%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .logo img.novice-chef-logo {
+    height: 35px;
+  }
+  h1.logo {
+    font-size: 20px;
+  }
+  .home {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+}
 /* ABOUT page ****************************************/
 .about-page {
   padding-bottom: 7rem;
@@ -81,7 +131,7 @@ span.underline-text {
 
 /* right */
 #site-feedback {
-  background-color: rgb(0, 175, 185, 1);;
+  background-color: rgb(0, 175, 185, 1);
   border-radius: 10px;
   padding: 2rem 1rem;
   text-align: center;
@@ -90,13 +140,19 @@ span.underline-text {
   margin: 0 auto;
   margin-top: 6rem;
   margin-right: 5rem;
+  box-shadow: 10px 10px rgb(0, 175, 185, 0.5);
 }
 
 .site-feedback-btn {
   height: 2rem;
   margin-top: 1rem;
+  font-weight: 600;
+}
+.site-feedback-btn:hover {
+  color: #f07167;
 }
 
+<<<<<<< HEAD
 #alice-img, #jackie-img {
   width: 22%;
   border-radius: 50%;
@@ -105,10 +161,36 @@ span.underline-text {
 }
 
 #alice-img {
+=======
+#jacquelyn-photo, #alice-photo {
+  width: 30%;
+  padding-bottom: 10rem;
+}
+
+#jacquelyn-photo {
+  float: left;
+  margin: 0.1rem 2rem 10rem 10rem;
+}
+
+#alice-photo {
+  float: right;
+  margin: 0.1rem 10rem 10rem 2rem;
+}
+
+#alice-img, #jacquelyn-img {
+  width: 50%;
+  opacity: 0.8; 
+  border-radius: 50%;
+  border: 4px solid #fdfcfc;
+}
+
+#jacquelyn-img {
+>>>>>>> 5ad71c5... fixed save btn not hiding, responsive results page, changed some buttons, about pfp opacities and hover, etc
   float: right;
   margin-right: 15%;
 }
 
+<<<<<<< HEAD
 #jackie-img {
   float: left;
   margin-left: 15%;
@@ -116,6 +198,14 @@ span.underline-text {
 
 #alice-img:hover, #jackie-img:hover {
   opacity: 0.75;
+=======
+#alice-img:hover {
+  opacity: 1; 
+}
+
+#jacquelyn-img:hover {
+  opacity: 1;
+>>>>>>> 5ad71c5... fixed save btn not hiding, responsive results page, changed some buttons, about pfp opacities and hover, etc
 }
 
 /* resize elements when screen gets small */
@@ -138,15 +228,12 @@ span.underline-text {
 
 /* overlay background for header ***********************/
 /* nav bar color  */
-:root {
-  --background: rgb(0, 175, 185, 0);
-}
 header {
   text-align: center;
   position: fixed;
   z-index: 999;
   color: #fdfcfc;
-  background: var(--background);
+  background: rgb(0, 175, 185);
 }
 .logo {
   text-transform: uppercase;
@@ -156,7 +243,12 @@ header {
   font-weight: 700;
   color: #fdfcfc;
 }
-
+/* novice chef logo */
+.logo img{
+  margin-left: 15px; 
+  margin-right:5px; 
+  height:60px;
+}
 /* Remove underline from all links */
 a:hover {
   color: #f07167;
@@ -170,7 +262,6 @@ a.active-nav {
 
 /* NAVBAR when screen is small */
 nav {
-  background: var(--background);
   position: absolute;
   text-align: left;
   top: 100%;
@@ -197,6 +288,9 @@ nav a {
   opacity: 0;
   transition: opacity 150ms ease-in-out;
 }
+.nav-first-link {
+  margin-top: 20px;
+}
 .nav-toggle:checked ~ nav {
   transform: scale(1, 1);
 }
@@ -212,6 +306,7 @@ nav a {
   top: 0;
   left: 0;
   margin-left: 1em;
+  margin-top: 0px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -365,6 +460,9 @@ form label {
   cursor: pointer;
   transition: .5s;
   font-size: 17px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .logbtn:hover {
   background-position: right;
@@ -414,7 +512,6 @@ form label {
   header {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    background: rgb(0, 175, 185, 1);
   }
   .logo {
     grid-column: 1 / 2;
@@ -438,6 +535,9 @@ form label {
     margin-left: 3em;
     margin-bottom: 0;
   }
+  .nav-first-link {
+    margin-top: 0px;
+  }
   nav a::before {
     content: "";
     display: block;
@@ -458,44 +558,16 @@ form label {
 
 /* Home "get started" button */
 .btn-lg.round, .btn-sm.round {
-	border-radius: 24px;
+  border-radius: 24px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
-.btn-outline-primary{
-  color:#fdfcfc;
-  background-color:transparent;
-  background-image:none;
-  border-color:#fdfcfc;
+.home-button {
+  font-weight: 600;
 }
-.btn-outline-primary:hover{
-  color:#fdfcfc;
-  background:linear-gradient(290deg, #fdfcdc, #f07167, #fdfcdc);
-  border:none;
-  cursor: pointer;
-  transition: .5s;
+.home-button:hover {
+  color: #f07167;
 }
-.btn-outline-primary:focus,
-.btn-outline-primary.focus{
-  box-shadow:0 0 0 .2rem rgba(128, 0, 0, 0.5);
-  background-position: right;
-}
-.btn-outline-primary.disabled,
-.btn-outline-primary:disabled{
-  color:#f07167;
-  background-color:transparent;
-}
-.btn-outline-primary:not(:disabled):not(.disabled):active,
-.btn-outline-primary:not(:disabled):not(.disabled).active,
-.show > .btn-outline-primary.dropdown-toggle{
-  color:#fff;
-  background-color:#f07167;
-  border-color: #f07167;
-}
-.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
-.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
-.show > .btn-outline-primary.dropdown-toggle:focus{
-  box-shadow:0 0 0 .2rem rgba(128, 0, 0, 0.5);
-}
-
 /* search page styles ********************************************/
 .search-page {
   background-size: cover;
@@ -556,8 +628,29 @@ form label {
   font-size: 0.9rem;
 }
 
-#recipe-search, #random-recipe {
+#recipe-search, #random-recipe-button {
   font-size: 1rem;
+}
+#random-recipe-button {
+  padding: 11px;
+}
+#back-search-button, #back-search-button-random {
+  font-weight: 600;
+  color: white;
+}
+#back-search-button {
+  margin-left: 0px;
+}
+#back-search-button-random {
+  margin-top: 120px;
+}
+#recipe-search-button:hover, #random-recipe-button:hover, #back-search-button:hover, #back-search-button-random:hover {
+  color: #f07167;
+  font-weight: 600;
+}
+.top-random {
+  margin-top: 60px;
+  padding: auto;
 }
 
 .form-control:focus {
@@ -590,7 +683,7 @@ form label {
     border-radius: .3rem;
   }
 
-  #random-recipe {
+  #random-recipe-button {
     padding: .5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
@@ -656,7 +749,7 @@ form label {
 
 /* random recipe page styles ********************************************/
 .random-page {
-  background-color: #f07167;
+  background-image: linear-gradient(to bottom, #e9a09b, #f07167);
   background-size: cover;
   display: grid;
   overflow: auto;
@@ -708,7 +801,8 @@ form label {
   height: 100%;
   margin: 0 auto;
   border-radius: 10px;
-  margin-top: 2rem;
+  margin-top: 0.7rem;
+  margin-bottom: 60px;
 }
 
 #card-title {
@@ -777,7 +871,10 @@ li {
 }
 
 #recipe-image img {
+  margin-top: -20px;
   border-radius: 10px;
+  margin-bottom: 40px;
+  border: 2px solid white;
 }
 
 ol {
@@ -797,12 +894,14 @@ ol > li::before {
 .save-recipe-random {
   margin-top: 1rem;
   width: 10rem;
-  border: 1px solid #f07167;
+  border: 1px solid white;
+  background-color: white;
 }
 
 .save-recipe-random:hover {
   background-color: #f07167;
-  color: #455560;
+  border: 1px solid white;
+  color: white;
 }
 
 #back-btn {
@@ -819,9 +918,11 @@ h4 {
 }
 
 button#scroll-down {
-  margin-top: 2rem;
+  margin-top: 0.7rem;
   width: 3rem;
-  font-size: 1.9rem;
+  font-size: 3rem;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
 }
 

@@ -21,14 +21,17 @@
       <title>Novice Chef</title>
       <!-- NAVBAR -->
       <header class="container-fluid">
-        <a href="{{ url_for('index') }}"><h1 class="logo">
-          <img style="margin-left: 15px; margin-right:5px; height:60px;" src="{{ url_for('static', filename='logo.png') }}">
-          Novice Chef</h1></a>
+        <a href="{{ url_for('index') }}">
+          <h1 class="logo">
+            <img class="novice-chef-logo" src="{{ url_for('static', filename='logo.png') }}">
+            Novice Chef
+          </h1>
+        </a>
         <form action="">
           <input type="checkbox" id="nav-toggle" class="nav-toggle">
           <nav>
             <ul>
-              <li>
+              <li class="nav-first-link">
                 <!-- add active-nav class to whichever link is clicked  -->
                 <a href="{{ url_for('index') }}" class="{{ 'active-nav' if active_page == 'home' else '' }}">Home</a>
               </li>
