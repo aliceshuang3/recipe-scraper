@@ -93,6 +93,10 @@ def searchRecipes():
     # when user enters ingredient to search by, pass to results page
     if request.method == 'POST':
         keyword_search = request.form.get('keyword')
+        # when user doesn't input anything
+        if keyword_search == "":
+            flash("Please enter an ingredient", "info")
+            return redirect(url_for('searchRecipes'))
         return redirect(url_for('recipeResults', keyword_search=keyword_search))
     return render_template("searchRecipes.html")
 

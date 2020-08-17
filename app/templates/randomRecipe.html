@@ -27,19 +27,19 @@
         {% if not current_user.is_anonymous %}
         <div class="save-btn">
           {% if current_user.is_following(recipe) %}
-          <button type="button" class="btn btn-sm btn-outline-light round save-recipe-random">
-          <a href="#" id=save{{recipe.id}} class="unsaves">Unsave</a>
+          <button type="button" class="btn btn-sm btn-outline-light save-recipe-random">
+            <a href="#" id=save{{recipe.id}} class="unsaves">Unsave</a>
           </button>
           {% else %}
-          <button type="button" class="btn btn-sm btn-outline-light round save-recipe-random">
-          <a href="#" id=save{{recipe.id}} class="saves">Save</a>
+          <button type="button" class="btn btn-sm btn-outline-light save-recipe-random">
+            <a href="#" id=save{{recipe.id}} class="saves">Save</a>
           </button>
           {% endif %}
         </div>
         <!-- send user back to saved recipes to go back to login -->
         {% else %}
-        <button type="button" class="btn btn-sm save-recipe-random">
-        <a class="notLoggedSave" href="{{ url_for('savedRecipes') }}">Save</a>
+        <button type="button" class="btn btn-sm btn-outline-light save-recipe-random">
+          <a class="notLoggedSave" href="{{ url_for('savedRecipes') }}">Save</a>
         </button>
         {% endif %}
       </div>
