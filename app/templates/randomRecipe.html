@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
+{% set active_page = "randomRecipe" %}
 
 {% block heading %}
-    
+
 {% endblock %}
 
 {% block body %}
@@ -20,7 +21,7 @@
         <button type="button" id="scroll-down" class="btn btn-outline-light btn-sm" onClick="document.getElementById('card-title').scrollIntoView({behavior: 'smooth'});">
           <i class="fa fa-angle-double-down" aria-hidden="true"></i>
         </button>
-      </div> 
+      </div>
       <div id="card-title">{{ recipe.recipe_name }}
         <br>
       <!-- save button  -->

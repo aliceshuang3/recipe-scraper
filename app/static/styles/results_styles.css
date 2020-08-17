@@ -222,7 +222,7 @@ a.saves, a.unsaves, a.notLoggedSave {
 }
 /* Remove underline from all links */
 a:hover {
-  color: #fdfcfc;
+  color: #f07167;
   text-decoration: none;
 }
 

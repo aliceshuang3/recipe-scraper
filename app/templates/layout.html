@@ -45,7 +45,7 @@
               </li>
               {% endif %}
               <li>
-                <a href="{{ url_for('searchRecipes') }}" class="{{ 'active-nav' if active_page == 'search' else '' }}">Search</a>
+                <a href="{{ url_for('searchRecipes') }}" class="{{ 'active-nav' if (active_page == 'search' or active_page == 'recipeResults' or active_page == 'randomRecipe') else '' }}">Search</a>
               </li>
               <!-- Current user is logged in and wants to log out/see saved recipes -->
               {% if not current_user.is_anonymous %}
@@ -96,7 +96,7 @@
           {% endif %}
         {% endwith %}
       </div>
-      
+
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
