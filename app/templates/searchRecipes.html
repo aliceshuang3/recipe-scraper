@@ -9,21 +9,30 @@
 {% block body %}
 
 <div class="container-fluid h-100 d-flex flex-row search-page">
+    {% if not current_user.is_anonymous %}
+    <div class="right-logged">
+      <h4>Logged in as: {{ current_user.username }}</h4>
+    </div>
+    {% endif %}
     <!-- left half  -->
     <div class="col search h-100 w-50">
       <!-- search input  -->
       <form method="POST">
         <div class="search-form">
-          <div class="search-text d-flex">
+          <div class="search-text">
             <h3>Help me use up my: </h3>
           </div>
-          <div class="d-flex">
-            <input type="text" name="keyword" id="recipe-search" class="form-control" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
-            <a href="{{url_for('recipeResults')}}">
-              <button type="submit" id="recipe-search-button" class="btn btn-outline-light">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </a>
+          <div class="search-row">
+            <div class="search-column search-input-column">
+              <input type="text" name="keyword" id="recipe-search" class="form-control" placeholder="Enter an ingredient" aria-label="Recipe Search By Ingredient" aria-describedby="basic-addon2">
+            </div>
+            <div class="search-column search-icon-column">
+              <a href="{{url_for('recipeResults')}}">
+                <button type="submit" id="recipe-search-button" class="btn btn-outline-light">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </a>
+            </div>
           </div>
         </div>
       </form>
@@ -32,7 +41,7 @@
     <div class="col random h-100 w-50">
       <form>
         <div class="form-group random-form">
-          <div class="adventurous-text d-flex">
+          <div class="adventurous-text">
             <h3>Feeling adventurous?</h3>
           </div>
           <a href="{{url_for('randomRecipe')}}">
@@ -42,16 +51,6 @@
       </form>
     </div>
     <!-- </div> -->
-    <div class="col h-50 username">
-      {% if not current_user.is_anonymous %}
-      <div class="left-logged">
-        <h4>Logged in as:</h4>
-      </div>
-      <div class="right-logged">
-        <h4>{{ current_user.username }}</h4>
-      </div>
-      {% endif %}
-    </div>
 </div>
 
 {% endblock %}

@@ -100,6 +100,9 @@ span.underline-text {
     margin-right: -60px;
     font-size: 30%;
   }
+  button.logbtn-password {
+    font-size: 12px;
+  }
 }
 @media screen and (max-width: 400px) {
   .logo img.novice-chef-logo {
@@ -196,6 +199,12 @@ span.underline-text {
 
 /* resize elements when screen gets small */
 @media screen and (max-width: 950px) {
+  #site-feedback {
+    margin-top: 5rem;
+    margin-right: 3rem;
+  }
+}
+@media screen and (max-width: 800px) {
   #site-feedback {
     font-size: 10px;
     min-width: 200px;
@@ -569,26 +578,25 @@ form label {
   min-width: 100%;
   margin: auto;
 }
-.username {
-  display: flex;
-  text-align: center;
-}
 .username h4 {
-  margin-top: 150px;
-  margin-right: 35px;
+  margin-top: 100px;
+  margin-right: auto;
+  padding-right: 20px;
   color: #fdfcfc;
+  font-size: 15px;
 }
-.left-logged h4, .right-logged h4 {
+.right-logged h4 {
   font-weight: 600;
-}
-.left-logged, .right-logged {
-  flex: 1;
-}
-.left-logged {
-  margin-left: -20px;
+  font-size: 0.8rem;
 }
 .right-logged {
-  margin-right: -40px;
+  position:absolute;
+  top:0;
+  right:0;
+  margin-top: 110px;
+  margin-right: auto;
+  padding-right: 20px;
+  z-index: 999;
 }
 /* left  */
 .search {
@@ -611,9 +619,6 @@ form label {
   width: 50%;
 }
 
-.search-text {
-  margin-left: 30px;
-}
 
 .search-form {
   top: 50%;
@@ -622,7 +627,40 @@ form label {
   transform: translate(-50%, -50%);
   position: fixed;
 }
-
+/* smaller window --> search button goes under input bar */
+.search-column {
+  float: left;
+}
+.search-input-column {
+  width: 90%;
+}
+.search-input-column input {
+  text-align: center;
+}
+.search-icon-column {
+  width: 10%;
+  margin-left: -20px;
+}
+.search-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 800px) {
+  .search-column {
+    width: 100%;
+  }
+  .search-input-column {
+    width: 130%;
+    position: absolute;
+    left: -13%;
+    top: 25%;
+  }
+  .search-icon-column {
+    margin-top: 50px;
+    margin-left: 0px;
+  }
+}
 /* make font smaller when screen gets small */
 .search-text h3, .adventurous-text h3 {
   color: #fdfcfc;
@@ -709,6 +747,10 @@ form label {
     position: fixed;
     min-width: 300px;
     margin-top: -30px;
+  }
+
+  .right-logged h4 {
+    font-size: 1.5rem;
   }
 }
 
@@ -894,18 +936,19 @@ ol > li::before {
 
 .save-recipe-random {
   margin-top: 1rem;
-  width: 8rem;
+  width: 5rem;
   border: 1px solid white;
   background-color: transparent;
 }
-a.saves, a.unsaves {
-  color: white;
+
+a.saves, a.unsaves, a.notLoggedSave {
+  color: #f07167;
   font-weight: 600;
 }
 a.unsaves {
   margin-right: 0px;
 }
-a.saves:hover, a.unsaves:hover {
+a.saves:hover, a.unsaves:hover, a.notLoggedSave:hover {
   color: #f07167;
 }
 
@@ -940,49 +983,4 @@ button#scroll-down:hover {
   #recipe-image img {
     width: 220px;
   }
-
-  button#scroll-down {
-    width: 2rem;
-    font-size: 1.3rem;
-  }
 }
-
-
-/* go to the top button */
-#TopButton {
-  display: inline-block;
-  background-color: #FF9800;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  border-radius: 4px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  transition: background-color .3s, 
-  opacity .5s, visibility .5s;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 1000;
-}
-#TopButton::after {
-  content: "\f077";
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 2em;
-  line-height: 50px;
-  color: #fff;
-}
-#TopButton:hover {
-  cursor: pointer;
-  background-color: #333;
-}
-#TopButton:active {
-  background-color: #555;
-}
-#TopButton.show {
-  opacity: 1;
-  visibility: visible;
-}
-

@@ -41,7 +41,7 @@
               <!-- If current user is not logged in -->
               {% if current_user.is_anonymous %}
               <li>
-                <a href="{{ url_for('login') }}" class="{{ 'active-nav' if active_page == 'login' else '' }}">Login</a>
+                <a href="{{ url_for('login') }}" id="login-nav" class="{{ 'active-nav' if active_page == 'login' else '' }}">Login</a>
               </li>
               {% endif %}
               <li>
