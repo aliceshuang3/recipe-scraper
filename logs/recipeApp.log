@@ -65,3 +65,4 @@ TypeError: The view function did not return a valid response. The function eithe
 2020-08-17 16:27:12,607 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
 2020-08-17 16:41:10,888 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
 2020-08-18 18:05:18,195 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
+2020-08-18 18:25:22,013 INFO: Recipe App startup [in /Users/jacquelynchow/personalprojects/python/recipe-scraper-flask-python/app/__init__.py:63]
