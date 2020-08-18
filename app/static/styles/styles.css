@@ -155,45 +155,35 @@ span.underline-text {
   color: #f07167;
 }
 
-#alice-img, #jacquelyn-img {
-  width: 22%;
-  border-radius: 50%;
-  border: 3px solid #fdfcfc;
-  margin-bottom: 8rem;
-}
-
 #jacquelyn-photo, #alice-photo {
-  width: 30%;
+  width: 50%;
   padding-bottom: 10rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-bottom: 25%;
 }
 
 #jacquelyn-photo {
   float: left;
-  margin: 0.1rem 2rem 10rem 10rem;
 }
 
 #alice-photo {
   float: right;
-  margin: 0.1rem 10rem 10rem 2rem;
 }
 
 #alice-img, #jacquelyn-img {
-  width: 50%;
-  opacity: 0.8; 
+  width: 30%;
+  height: 30%;
+  opacity: 0.8;
   border-radius: 50%;
   border: 4px solid #fdfcfc;
 }
 
 #jacquelyn-img {
   float: right;
-  margin-right: 15%;
 }
 
-#alice-img:hover {
-  opacity: 1; 
-}
-
-#jacquelyn-img:hover {
+#alice-img:hover, #jacquelyn-img:hover {
   opacity: 1;
 }
 
@@ -219,6 +209,28 @@ span.underline-text {
   .site-feedback-btn {
     font-size: 0.6rem;
   }
+
+  #jacquelyn-photo, #alice-photo {
+    width: 20%;
+    padding: 0rem;
+    margin-top: 70%;
+    padding-bottom: 5rem;
+  }
+
+  #jacquelyn-photo {
+    float: left;
+    margin-left: -43%;
+  }
+
+  #jacquelyn-img, #alice-img {
+    width: 50%;
+    border: 3px solid #fdfcfc;
+  }
+
+  #alice-photo {
+    float: left;
+    margin-left: -12%;
+  }
 }
 
 /* overlay background for header ***********************/
@@ -240,8 +252,8 @@ header {
 }
 /* novice chef logo */
 .logo img{
-  margin-left: 15px; 
-  margin-right:5px; 
+  margin-left: 15px;
+  margin-right:5px;
   height:60px;
 }
 /* Remove underline from all links */
