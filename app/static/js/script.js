@@ -1,4 +1,4 @@
-$('document').ready(function (){ 
+$('document').ready(function (){
     $('.saves, .unsaves').click(function(e) {
         var id = $(this).attr('id');
         // get rid of "save" word from recipeResults.html id name
@@ -52,3 +52,28 @@ function startToggle(n) {
     }
 
 }
+
+// back to top button on results page----------------------------------------
+// Reference: https://codepen.io/matthewcain/pen/ZepbeR
+
+// call after elements on page have loaded
+window.onload = function(){
+  var btn = $("#to-top-button");
+
+  $('div.search-results-page').scroll(function() {
+
+    // if any scrolling happened, show the button
+    y = $('div.search-results-page').scrollTop();
+    if (y > 0) {
+      btn.addClass('show');
+    } else {
+      btn.removeClass('show');
+    }
+  });
+
+  // on button click, go back to the top of page
+  btn.on('click', function(e) {
+    e.preventDefault();
+    $('div.search-results-page').animate({scrollTop:0}, '300');
+  });
+};

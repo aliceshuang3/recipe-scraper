@@ -174,6 +174,57 @@ h2 {
   margin-bottom: 10px;
 }
 
+/* back to top button ----------------------------------------------------- */
+#to-top-button {
+  display: inline-block;
+  background-color: #00afb9;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 5rem;
+  right: 1rem;
+  transition: background-color .3s,
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+#to-top-button::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 45px;
+  color: #fff;
+}
+#to-top-button:hover {
+  cursor: pointer;
+  background-color: #f07167;
+}
+#to-top-button:active {
+  background-color: #555;
+}
+#to-top-button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* reposition btn and resize when screen is small */
+@media screen and (max-width: 800px) {
+  #to-top-button {
+    width: 35px;
+    height: 35px;
+    right: 0.5rem;
+  }
+  #to-top-button::after {
+    font-size: 1.5em;
+    line-height: 35px;
+  }
+}
+
 /* main styles -------------------------------------------------------------*/
 @font-face {
   font-family: 'Montserrat', sans-serif;
@@ -379,7 +430,7 @@ nav a {
 .search-results-page {
   color: #333;
   display: grid;
-  overflow: auto;
+  /* overflow: auto; */
   height: 100%;
   position: absolute;
   left: 50%;
