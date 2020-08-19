@@ -256,7 +256,7 @@ header {
   position: fixed;
   z-index: 999;
   color: #fdfcfc;
-  background: var(--background);
+  background: rgb(0, 175, 185);
 }
 
 .logo {
