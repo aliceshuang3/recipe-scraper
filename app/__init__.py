@@ -67,7 +67,7 @@ def create_app(config_class=Config):
 
         app.logger.setLevel(logging.INFO)
         app.logger.info('Novice Chef startup')
-return app
+    return app
 # models is a module that will define the structure of the database
 # import error handlers
 from app import routes, models, errors

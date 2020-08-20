@@ -8,22 +8,9 @@ from app.forms import ResetRequestForm, ResetPasswordForm, FeedbackForm
 from app.emails import *
 import random
 import json
+
 @app.route("/", methods=["GET"])
 def index():
-    with open('data/Data.json') as json_data:
-        jsonData = json.load(json_data)
-
-    for r in jsonData:
-        # create Recipe DB object to insert
-        # turn instructions arr into 1 string
-        instrucs = ""
-        for i in r['instructions']:
-            instrucs = instrucs + i + " "
-        recipe = Recipe(recipe_name=r['name'], recipe_link=r['link'], image_link=r['image'], servings=r['servings'], instructions=instrucs)
-        
-        CRUD.add(db, recipe)
-
-    data = Recipe.query.all()
     return render_template("home.html")
 
 @app.route("/about", methods=["GET"])
