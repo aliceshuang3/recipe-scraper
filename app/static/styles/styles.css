@@ -779,7 +779,50 @@ form label {
   height: 45px;
 }
 
-/* Feedback Form */
+/* Autocomplete on search form *****************************************/
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  /* border: 1px solid #d4d4d4; */
+  border-left: none;
+  border-right: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 1.8rem;
+  width: 71%;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fdfcfc;
+  /* border-bottom: 1px solid rgb(51, 51, 51, 0.25); */
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #00afb9;
+  color: #fdfcfc;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: #00afb9 !important;
+  color: #fdfcfc;
+}
+
+/* adjust width of autocomplete items when screen gets small */
+@media screen and (max-width: 800px) {
+  .autocomplete-items {
+    width: 98%;
+    left: 0.1rem;
+    bottom: 0.3rem;
+  }
+}
+
+/* Feedback Form *******************************************************/
 .feedback-field p {
   border: none;
 }
