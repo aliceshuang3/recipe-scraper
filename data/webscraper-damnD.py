@@ -81,8 +81,10 @@ def addRecipes():
                 "link": link,
                 "image": image
             }
-            # append recipe to master recipe list
-            recipeArr.append(recipeObject) 
+            # ensure no duplicates
+            if recipeObject not in recipeArr:
+                # append recipe to master recipe list
+                recipeArr.append(recipeObject)
     
 # -------------------------------------------------------------------------- #
 
@@ -130,5 +132,5 @@ mainLoop("https://damndelicious.net/category/bread/page/", 1)
 # add all recipes to the master list
 addRecipes()
 
-with open('damndeliciousRecipes.json', 'w') as outfile: json.dump(recipeArr, outfile, ensure_ascii=False, indent=4)  
+with open('damnDRecipes.json', 'w') as outfile: json.dump(recipeArr, outfile, ensure_ascii=False, indent=4)  
 

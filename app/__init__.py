@@ -33,35 +33,41 @@ mail = Mail(app)
 
 # Logging errors by email
 # only going to enable the email logger when the app is running without debug mode
-if not app.debug:
-    if app.config['MAIL_SERVER']:
-        auth = None
-        if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
-            auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
-        secure = None
-        if app.config['MAIL_USE_TLS']:
-            secure = ()
-        mail_handler = SMTPHandler(
-            mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-            fromaddr='no-reply@' + app.config['MAIL_SERVER'],
-            toaddrs=app.config['MAIL_USERNAME'], subject='Recipe App Failure',
-            credentials=auth, secure=secure)
-        mail_handler.setLevel(logging.ERROR)
-        app.logger.addHandler(mail_handler)
-    # 
-    if not os.path.exists('logs'):
-        os.mkdir('logs')
-    # rotates the logs ensuring that log files do not grow too large when the app runs for a long time
-    file_handler = RotatingFileHandler('logs/recipeApp.log', maxBytes=10240, backupCount=10)
-    # timestamp, logging level, the message and the source file and line number from where the log entry originated
-    file_handler.setFormatter(logging.Formatter(
-        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
-    file_handler.setLevel(logging.INFO)
-    app.logger.addHandler(file_handler)
+def create_app(config_class=Config):
+    if not app.debug and not app.testing:
+        if app.config['MAIL_SERVER']:
+            auth = None
+            if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
+                auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
+            secure = None
+            if app.config['MAIL_USE_TLS']:
+                secure = ()
+            mail_handler = SMTPHandler(
+                mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
+                fromaddr='no-reply@' + app.config['MAIL_SERVER'],
+                toaddrs=app.config['MAIL_USERNAME'], subject='Novice Chef Failure',
+                credentials=auth, secure=secure)
+            mail_handler.setLevel(logging.ERROR)
+            app.logger.addHandler(mail_handler)
+        
+        if app.config['LOG_TO_STDOUT']:
+            stream_handler = logging.StreamHandler()
+            stream_handler.setLevel(logging.INFO)
+            app.logger.addHandler(stream_handler)
+        else:
+            if not os.path.exists('logs'):
+                os.mkdir('logs')
+            # rotates the logs ensuring that log files do not grow too large when the app runs for a long time
+            file_handler = RotatingFileHandler('logs/novicechef.log', maxBytes=10240, backupCount=10)
+            # timestamp, logging level, the message and the source file and line number from where the log entry originated
+            file_handler.setFormatter(logging.Formatter(
+                '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+            file_handler.setLevel(logging.INFO)
+            app.logger.addHandler(file_handler)
 
-    app.logger.setLevel(logging.INFO)
-    app.logger.info('Recipe App startup')
-
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('Novice Chef startup')
+    return app
 # models is a module that will define the structure of the database
 # import error handlers
 from app import routes, models, errors

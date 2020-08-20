@@ -2,6 +2,8 @@
 # run in routes.py
 # run both scrips 3x, once per json file, replacing keywords as necessary 
 
+# !!!!!!!!!!!! import json at the top of the file
+
 # load RECIPE data--------------------------------------------------------------
 # open scraped json data file and load
   with open('data/tastyData.json') as json_data:

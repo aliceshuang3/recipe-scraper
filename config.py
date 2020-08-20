@@ -1,5 +1,8 @@
 import os
+from dotenv import load_dotenv
+
 basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
 
 class Config(object):
     # The first term looks for the value of an environment variable, also called SECRET_KEY. 
@@ -14,3 +17,5 @@ class Config(object):
     MAIL_USE_TLS = 1
     MAIL_USERNAME = os.environ.get('recipe_email_username')
     MAIL_PASSWORD = os.environ.get('recipe_email_password')
+    # Option to log to stdout
+    LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')

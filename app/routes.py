@@ -7,6 +7,7 @@ from werkzeug.urls import url_parse
 from app.forms import ResetRequestForm, ResetPasswordForm, FeedbackForm
 from app.emails import *
 import random
+import json
 
 @app.route("/", methods=["GET"])
 def index():

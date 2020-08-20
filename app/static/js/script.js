@@ -77,3 +77,4 @@ window.onload = function(){
     $('div.search-results-page').animate({scrollTop:0}, '300');
   });
 };
+
