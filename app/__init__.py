@@ -10,11 +10,13 @@ from flask_mail import Mail
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+from whitenoise import WhiteNoise
 
 app = Flask(__name__)
 # tell Flask to read config file and apply it
 app.config.from_object(Config)
-
+# uploading static files
+app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
 # database objects must be created after the application
 # database initialization
 db = SQLAlchemy(app)
