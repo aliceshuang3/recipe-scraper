@@ -41,12 +41,9 @@ jedi==0.17.2
 Jinja2==2.11.2
 joblib==0.16.0
 Js2Py==0.68
-jupyter-client==6.1.6
-jupyter-core==4.6.3
 keyring==21.2.1
 kiwisolver==1.2.0
 language-tags==1.0.0
-lxml==4.5.0
 Mako==1.1.3
 MarkupSafe==1.1.1
 mf2py==1.1.2
