@@ -8,7 +8,6 @@ blinker==1.4
 cachelib==0.1
 certifi==2020.6.20
 chardet==3.0.4
-chromedriver-py==81.0.4044.69
 click==7.1.2
 colorama==0.4.3
 config==0.5.0.post0
@@ -41,20 +40,13 @@ jedi==0.17.2
 Jinja2==2.11.2
 joblib==0.16.0
 Js2Py==0.68
-jupyter-client==6.1.6
-jupyter-core==4.6.3
 keyring==21.2.1
 kiwisolver==1.2.0
 language-tags==1.0.0
-lxml==4.5.0
 Mako==1.1.3
 MarkupSafe==1.1.1
-matplot==0.1.9
-matplotlib==3.3.0
 mf2py==1.1.2
-numpy==1.19.0
 packaging==20.4
-pandas==1.0.5
 parso==0.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
@@ -80,14 +72,12 @@ pyzmq==19.0.1
 rdflib==4.2.2
 rdflib-jsonld==0.5.0
 readme-renderer==26.0
-recipe-scrapers @ file:///Users/jacquelynchow/recipe-scrapers
 requests==2.23.0
 requests-file==1.5.1
 requests-toolbelt==0.9.1
 rfc3986==1.4.0
 scikit-learn==0.23.1
 scipy==1.5.2
-selenium==3.141.0
 SimpleWebSocketServer==0.1.1
 six==1.15.0
 soupsieve==2.0.1
