@@ -92,8 +92,10 @@ def addRecipes():
                     "link": link,
                     "image": image
                 }
-                # append recipe to master recipe list
-                recipeArr.append(recipeObject) 
+                # ensure no duplicates
+                if recipeObject not in recipeArr:
+                    # append recipe to master recipe list
+                    recipeArr.append(recipeObject)
     
 # -------------------------------------------------------------------------- #
 
