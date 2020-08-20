@@ -76,4 +76,14 @@ window.onload = function(){
     e.preventDefault();
     $('div.search-results-page').animate({scrollTop:0}, '300');
   });
+  console.log(window.location.hostname)
+  var recipeImages = document.getElementsByClassName("recipe-card-header");
+  console.log(recipeImages)
+  for (var i = 0; i < recipeImages.length; i++) {
+    if (recipeImages[i].style.backgroundImage === 'url("")') {
+        console.log("undefined image")
+    }
+    console.log(recipeImages[i].style.backgroundImage)
+  }
 };
+
