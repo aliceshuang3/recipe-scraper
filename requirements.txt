@@ -98,6 +98,5 @@ wcwidth==0.2.5
 webencodings==0.5.1
 websocket-client==0.57.0
 Werkzeug==1.0.1
-whitenoise==5.2.0
 WTForms==2.3.1
 xlrd==1.2.0

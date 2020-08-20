@@ -357,7 +357,7 @@ nav a {
   background-image: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)),
-        url("/static/cropped.jpg");
+        url("https://novicechef-assets.s3.us-east-2.amazonaws.com/cropped-bg.JPG");
   background-size: cover;
   display: grid;
   color: #fdfcfc;
