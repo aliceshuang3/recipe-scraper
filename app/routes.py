@@ -125,7 +125,7 @@ def savedRecipes():
         else:
             saved = False
             return render_template('savedRecipes.html', saved=saved)
-            
+
     flash("Login or Sign Up to start saving recipes", "info")
     # user isn't logged in yet, render login page
     return redirect(url_for('login'))
@@ -140,6 +140,9 @@ def recipeResults():
      if len(all_matches) > 0:
          recipes = []
          ingredients = []
+
+         # shuffle list of ingredients randomly so recipes show up in different order on page
+         random.shuffle(all_matches) 
 
          for i in range(len(all_matches)):
              # get corresponding recipe for each ingredient by matching up the recipe id
