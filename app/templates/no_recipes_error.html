@@ -12,7 +12,9 @@
         <h6>No recipes were found matching your search.</h6>
         <br>
         <div class="txtb">
-            <button type=submit class="btn btn-outline-primary btn-lg round"><a style="color:#fdfcfc;" href="{{ url_for('searchRecipes') }}">Search Again</a></button>
+            <a href="{{ url_for('searchRecipes') }}">
+                <button type="button" class="btn btn-outline-light btn-lg round home-button">Search Again</button>
+            </a>        
         </div>
     </div>
 </div>

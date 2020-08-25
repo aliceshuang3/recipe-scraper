@@ -12,7 +12,9 @@
     <h2>File Not Found</h2>
     <br>
     <div class="txtb">
-      <button type=submit class="btn btn-outline-primary btn-lg round"><a  style="color:#fdfcfc;" href="{{ url_for('index') }}">Back</a></button>
+      <a href="{{ url_for('index') }}">
+        <button type="button" class="btn btn-outline-light btn-lg round home-button">Back</button>
+      </a>    
     </div>
 </div>
 {% endblock %}

@@ -1051,3 +1051,9 @@ button#scroll-down:hover {
     width: 220px;
   }
 }
+
+.basepage {
+  margin-top: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, '.env'))
+load_dotenv(os.path.join(basedir, '.flaskenv'))
 
 class Config(object):
     # The first term looks for the value of an environment variable, also called SECRET_KEY.
