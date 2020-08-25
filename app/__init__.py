@@ -71,4 +71,3 @@ def create_app(config_class=Config):
 # models is a module that will define the structure of the database
 # import error handlers
 from app import routes, models, errors
-

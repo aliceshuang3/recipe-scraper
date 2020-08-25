@@ -1,1 +1,5 @@
-FLASK_APP=recipeApp.py
+export FLASK_APP=recipeApp.py
+export MAIL_USERNAME=recipescraperapp
+export MAIL_PASSWORD=alicepaulhall
+export SQLALCHEMY_DATABASE_URI=
+export SECRET_KEY=alicejacquelynalicepaulhall
