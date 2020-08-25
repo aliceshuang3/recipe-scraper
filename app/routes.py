@@ -28,7 +28,7 @@ def feedback():
             email_feedback(name=form.name.data,
                subject=form.subject.data,
                sender=form.email.data,
-               recipient=app.config['MAIL_USERNAME'],
+               recipient="recipeappscraper@gmail.com",
                feedback_body=form.feedbackBody.data)
         flash('Thank you for your feedback.', "success")
         return redirect(url_for('index'))
