@@ -17,7 +17,7 @@ Clean, easy-to-use app for beginner cooks to target their recipe search based on
 
 Created by **Jacquelyn Chow** and **Alice Huang**, two Swarthmore College students, during the summer of 2020.
 
-### Check out the app: *link here*
+#### [Click here to check out the app](http://novicechef.pythonanywhere.com/)
 
 ## Motivation
 There are so many recipe sites online but no streamlined way to search specifically for ways to use up "eggs" or "lettuce" sitting around in the fridge. We wanted to create an app built specfically for this need, enabling users to search directly for tasty recipes they know are easy to prepare. Hopefully, this tool can also help reduce food waste in the kitchen by making it easy to find uses for leftover ingredients while making home cooking more enjoyable too.
@@ -39,6 +39,7 @@ There are so many recipe sites online but no streamlined way to search specifica
 * **Recipe Shuffling** (ensures recipes from different sites are shown to the user)
 
 ## Demo
+#### [Link to Video](https://youtu.be/E_hDfXbT6j8)
 
 ## Installation
 1. Go to the project directory in terminal
